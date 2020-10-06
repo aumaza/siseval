@@ -1,5 +1,5 @@
-<?php  include "../../functions/functions.php";
-       include "../../connection/connection.php"; 
+<?php  include "../../functions/functions.php"; ?>
+<?php  include "../../connection/connection.php"; 
 
 	session_start();
 	$varsession = $_SESSION['user'];
@@ -14,16 +14,17 @@
 	die();
 	}
 
-
+	$id = $_GET['id'];
+	
 
 ?>
 
 
 <html><head>
 	<meta charset="utf-8">
-	<title>Nuevo Registro</title>
+	<title>SisEval - Actualizar Agente</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../../icons/actions/user-group-new.png" />
+	<link rel="icon" type="image/png" href="../../icons/actions/bookmarks-organize.png" />
 	<?php skeleton();?>
 	
 </head>
@@ -46,6 +47,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
+                        
                     </div>
                 </div>
             </div>
@@ -57,8 +59,9 @@
        
 	mysqli_select_db('siseval');
 	  	
-	     if (isset($_POST['A'])) {
-	     
+	     if (isset($_POST['A'])){
+			    
+			    $id = mysqli_real_escape_string($conn,$_POST["id"]);
 			    $nombre = mysqli_real_escape_string($conn,$_POST["nombre"]);
                             $cuil = mysqli_real_escape_string($conn,$_POST["cuil"]);
                             $f_nac = mysqli_real_escape_string($conn,$_POST["f_nac"]);
@@ -70,12 +73,13 @@
                             $niv_func_ejec = mysqli_real_escape_string($conn,$_POST["niv_func_ejec"]);
                             $sanciones = mysqli_real_escape_string($conn,$_POST["sanciones"]);
                                                         
-                             addAgente($nombre,$cuil,$f_nac,$nivel_grado,$revista,$sexo,$nivel,$func_ejec,$niv_func_ejec,$sanciones,$conn);
-                            }
-                            }else{
-			      mysqli_error($conn);
-                                }
-                                    
+                             updateAgente($id,$nombre,$cuil,$f_nac,$nivel_grado,$revista,$sexo,$nivel,$func_ejec,$niv_func_ejec,$sanciones,$conn);
+                        
+
+                             }
+                             }else {
+                                    mysqli_error($conn);
+                                   }
 
   //cerramos la conexion
   
@@ -87,6 +91,7 @@
 <div class="row">
 <div class="col-md-12">
 <meta http-equiv="refresh" content="3;URL=../main/main.php "/>
+</div>
 </div>
 </div>
 </div>

@@ -329,12 +329,13 @@ function newAgente(){
 }
 
 
+
 /*
-** Funcion editar norma
+** Funcion alta de norma
 */
-function editNorma($id,$conn){
-    
-    $sql = "select * from normas where id = '$id'";
+function editAgente($id,$conn){
+
+      $sql = "select * from empleados where id = '$id'";
       mysqli_select_db('siseval');
       $res = mysqli_query($conn,$sql);
       $fila = mysqli_fetch_assoc($res);
@@ -342,59 +343,95 @@ function editNorma($id,$conn){
       echo '<div class="container">
 	    <div class="row">
 	    <div class="col-sm-8">
-	      <h2>Editar Normativa</h2><hr>
-	        <form action="../normas/formUpdate.php" method="POST">
+	      <h2>Editar Agente</h2><hr>
+	        <form action="../agentes/formUpdate.php" method="POST">
 	        <input type="hidden" id="id" name="id" value="'.$fila['id'].'" />
 	        
 	        <div class="form-group">
-		  <label for="nombre">Nro de Norma</label>
-		  <input type="text" class="form-control" id="nombre" name="n_norma" value="'.$fila['n_norma'].'" onKeyDown="limitText(this,25);" required>
+		  <label for="nombre">Nombre y Apellido</label>
+		  <input type="text" class="form-control" id="nombre" name="nombre" onKeyDown="limitText(this,60);" value="'.$fila['nombre'].'" required>
 		</div>
 		
 		<div class="form-group">
-		  <label for="sel1">Tipo de Norma:</label>
-		  <select class="form-control" name="t_norma">
+		  <label for="cuil">CUIL</label>
+		  <input type="text" class="form-control" id="cuil" name="cuil" onKeyDown="limitText(this,11);" value="'.$fila['cuil'].'" required>
+		</div>
+		
+		<div class="form-group">
+		  <label for="f_nac">Fecha de Nacimiento</label>
+		  <input type="date" class="form-control" id="f_nac" name="f_nac" value="'.$fila['f_nac'].'" required>
+		</div>
+		
+		<div class="form-group">
+		  <label for="nivel_grado">Nivel y Grado</label>
+		  <input type="text" class="form-control" id="nivel_grado" name="nivel_grado" onKeyDown="limitText(this,3);" value="'.$fila['nivel_grado'].'" required>
+		</div>
+		
+		<div class="form-group">
+		  <label for="sel1">Situación de Revista</label>
+		  <select class="form-control" name="revista">
 		    <option value="" disabled selected>Seleccionar</option>
-		    <option value="Ley" '.($fila['t_norma'] == "Ley" ? "selected" : ""). '>Ley</option>
-		    <option value="Decreto" '.($fila['t_norma'] == "Decreto" ? "selected" : "").'>Decreto</option>
-		    <option value="Resolución" '.($fila['t_norma'] == "Resolución" ? "selected" : "").'>Resolución</option>
-		    <option value="Disposición" '.($fila['t_norma'] == "Disposición" ? "selected" : "").'>Disposición</option>
-		    <option value="Nota" '.($fila['t_norma'] == "Nota" ? "selected" : "").'>Nota</option>
-		    <option value="Memo" '.($fila['t_norma'] == "Memo" ? "selected" : "").'>Memo</option>
+		    <option value="Planta Permanente" '.($fila['revista'] == "Planta Permanente" ? "selected" : ""). '>Planta Permanente</option>
+		    <option value="Ley Marco" '.($fila['revista'] == "Ley Marco" ? "selected" : ""). '>Ley Marco</option>
+		    <option value="Contrato" '.($fila['revista'] == "Contrato" ? "selected" : ""). '>Contrato</option>
 		  </select>
 		</div> 
 		
 		<div class="form-group">
-		  <label for="sel1">Ambito de la Norma:</label>
-		  <select class="form-control" name="foro_norma">
+		  <label for="sel1">Sexo:</label>
+		  <select class="form-control" name="sexo">
 		    <option value="" disabled selected>Seleccionar</option>
-		    <option value="Comercial" '.($fila['foro_norma'] == "Comercial" ? "selected" : ""). '>Comercial</option>
-		    <option value="Laboral" '.($fila['foro_norma'] == "Laboral" ? "selected" : ""). '>Laboral</option>
-		    <option value="Civil" '.($fila['foro_norma'] == "Civil" ? "selected" : ""). '>Civil</option>
-		    <option value="Penal" '.($fila['foro_norma'] == "Penal" ? "selected" : ""). '>Penal</option>
-		    </select>
+		    <option value="Masculino" '.($fila['sexo'] == "Masculino" ? "selected" : ""). '>Masculino</option>
+		    <option value="Femenino" '.($fila['sexo'] == "Femenino" ? "selected" : ""). '>Femenino</option>
+		  </select>
+		  </div>
+		
+		<div class="form-group">
+		  <label for="sel1">Nivel:</label>
+		  <select class="form-control" name="nivel">
+		    <option value="" disabled selected>Seleccionar</option>
+		    <option value="1" '.($fila['nivel'] == "1" ? "selected" : ""). '>Gerencial</option>
+		    <option value="2" '.($fila['nivel'] == "2" ? "selected" : ""). '>Medio Profesional/Técnico con personal a cargo</option>
+		    <option value="3" '.($fila['nivel'] == "3" ? "selected" : ""). '>Medio con personal a cargo</option>
+		    <option value="4" '.($fila['nivel'] == "4" ? "selected" : ""). '>Medio sin personal a cargo</option>
+		    <option value="5" '.($fila['nivel'] == "5" ? "selected" : ""). '>Operativo con personal a cargo</option>
+		    <option value="6" '.($fila['nivel'] == "6" ? "selected" : ""). '>Operativo sin personal a cargo</option>
+		  </select>
+		  </div>
+		  
+		<div class="form-group">
+		  <label for="sel1">Funciones Ejecutivas:</label>
+		  <select class="form-control" name="func_ejec">
+		    <option value="" disabled selected>Seleccionar</option>
+		    <option value="Si" '.($fila['funcion_ejec'] == "Si" ? "selected" : ""). '>Si</option>
+		    <option value="No" '.($fila['funcion_ejec'] == "No" ? "selected" : ""). '>No</option>
+		  </select>
+		  </div>
+		  
+		<div class="form-group">
+		  <label for="sel1">Nivel Función Ejecutiva:</label>
+		  <select class="form-control" name="niv_func_ejec">
+		    <option value="" disabled selected>Seleccionar</option>
+		    <option value="0" '.($fila['niv_func_ejec'] == "0" ? "selected" : ""). '>0</option>
+		    <option value="1" '.($fila['niv_func_ejec'] == "1" ? "selected" : ""). '>1</option>
+		    <option value="2" '.($fila['niv_func_ejec'] == "2" ? "selected" : ""). '>2</option>
+		    <option value="3" '.($fila['niv_func_ejec'] == "3" ? "selected" : ""). '>3</option>
+		    <option value="4" '.($fila['niv_func_ejec'] == "4" ? "selected" : ""). '>4</option>
+		  </select>
 		</div>
 		
 		<div class="form-group">
-		  <label for="pwd">Fecha Publicación:</label>
-		  <input type="date" class="form-control" id="f_pub" name="f_pub" value="'.$fila['f_pub'].'" required>
-		</div>
-		
-		<div class="form-group">
-		  <label for="pwd">Año:</label>
-		  <input type="text" class="form-control" id="anio" name="anio" value="'.$fila['anio_pub'].'" onKeyDown="limitText(this,4);" required>
-		</div>
-		
-		<div class="form-group">
-		  <label for="pwd">Observaciones:</label>
-		  <textarea class="form-control" id="observaciones" name="observaciones" onKeyDown="limitText(this,300);" required>'.$fila['observaciones'].'</textarea>
-		</div>
+		  <label for="sel1">Sanciones:</label>
+		  <select class="form-control" name="sanciones">
+		    <option value="" disabled selected>Seleccionar</option>
+		    <option value="Si" '.($fila['sanciones'] == "Si" ? "selected" : ""). '>Si</option>
+		    <option value="No" '.($fila['sanciones'] == "No" ? "selected" : ""). '>No</option>
+		  </select>
+		  </div>
 		
 		<button type="submit" class="btn btn-success btn-block" name="A"><img src="../../icons/devices/media-floppy.png"  class="img-reponsive img-rounded"> Guardar</button>
-	      </form> 
-	      <a href="../main/main.php"><button type="submit" class="btn btn-primary btn-block" ><img src="../../icons/actions/arrow-left.png"  class="img-reponsive img-rounded"> Volver</button></a>
+	      </form> <a href="../main/main.php"><button type="submit" class="btn btn-primary btn-block" ><img src="../../icons/actions/arrow-left.png"  class="img-reponsive img-rounded"> Volver</button></a>
 	      <br>
-	      
 	    </div>
 	    </div>
 	</div>';
@@ -402,11 +439,13 @@ function editNorma($id,$conn){
 }
 
 
-function updateNorma($id,$n_norma,$t_norma,$foro_norma,$f_pub,$anio,$obs,$conn){
+
+
+function updateAgente($id,$nombre,$cuil,$f_nac,$nivel_grado,$revista,$sexo,$nivel,$func_ejec,$niv_func_ejec,$sanciones,$conn){
 
 		
 	mysqli_select_db('siseval');
-	$sqlInsert = "update normas set n_norma = '$n_norma', t_norma = '$t_norma', foro_norma = '$foro_norma', f_pub = '$f_pub', anio_pub = '$anio', observaciones = '$obs' where id = '$id'";
+	$sqlInsert = "update empleados set nombre = '$nombre', cuil = '$cuil', f_nac = '$f_nac', nivel_grado = '$nivel_grado', revista = '$revista', sexo = '$sexo', nivel = '$nivel', sanciones = '$sanciones', funcion_ejec = '$func_ejec', niv_func_ejec = '$niv_func_ejec' where id = '$id'";
            
 	$res = mysqli_query($conn,$sqlInsert);
 
@@ -496,69 +535,6 @@ if($conn){
     mysqli_close($conn);
 
 }
-
-
-function normativas($conn,$norma){
-
-if($conn){
-	
-	$sql = "SELECT * FROM normas where t_norma = '$norma'";
-    	mysqli_select_db('siseval');
-    	$resultado = mysqli_query($conn,$sql);
-	//mostramos fila x fila
-	$count = 0;
-	echo '<div class="container">
-	      <div class="alert alert-success">
-	      <img src="../../icons/apps/kthesaurus.png"  class="img-reponsive img-rounded"> Tipo de Norma: '.$norma.'
-	      </div><br>';
-	
-            echo "<table class='display compact' style='width:100%' id='myTable'>";
-              echo "<thead>
-		    <th class='text-nowrap text-center'>ID</th>
-		    <th class='text-nowrap text-center'>Nro. Norma</th>
-                    <th class='text-nowrap text-center'>Tipo Norma</th>
-                    <th class='text-nowrap text-center'>Foro</th>
-                    <th class='text-nowrap text-center'>F. Publicación</th>
-                    <th class='text-nowrap text-center'>Año Publicación</th>
-                    <th class='text-nowrap text-center'>Observaciones</th>
-                    <th class='text-nowrap text-center'>Archivo</th>
-                    <th>&nbsp;</th>
-                    </thead>";
-
-
-	while($fila = mysqli_fetch_array($resultado)){
-			  // Listado normal
-			 echo "<tr>";
-			 echo "<td align=center>".$fila['id']."</td>";
-			 echo "<td align=center>".$fila['n_norma']."</td>";
-			 echo "<td align=center>".$fila['t_norma']."</td>";
-			 echo "<td align=center>".$fila['foro_norma']."</td>";
-			 echo "<td align=center>".$fila['f_pub']."</td>";
-			 echo "<td align=center>".$fila['anio_pub']."</td>";
-			 echo "<td align=center>".$fila['observaciones']."</td>";
-			 echo "<td align=center>".$fila['file_name']."</td>";
-			 echo "<td class='text-nowrap'>";
-			 echo '<a href="../normas/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm " ><span class="glyphicon glyphicon-pencil"></span> Editar</a><br>';
-			 echo '<a href="#" data-href="../normas/eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a><br>';
-			 echo '<a href="../normas/upload.php?id='.$fila['id'].'" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-cloud-upload"></span> PDF</a><br>';
-			 echo '<a href="../normas/download.php?file_name='.$fila['file_name'].'" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-cloud-download"></span> PDF</a>';
-			 echo "</td>";
-			 $count++;
-		}
-
-		echo "</table>";
-		echo "<br>";
-		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
-		echo '</div>';
-		}else{
-		  echo 'Connection Failure...';
-		}
-
-    mysqli_close($conn);
-
-
-}
-
 
 function editPassUser($id,$conn){
 
@@ -660,11 +636,11 @@ function updatePass($id,$pass1,$pass2,$conn){
 }
 
 
-function delNorma($id,$conn){
+function delAgente($id,$conn){
 
 		
 	mysqli_select_db('siseval');
-	$sql = "delete from normas where id = '$id'";
+	$sql = "delete from empleados where id = '$id'";
            
 	$res = mysqli_query($conn,$sql);
 
