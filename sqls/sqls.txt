@@ -1,0 +1,24 @@
+#tabla usuarios
+create table usuarios (
+id int(11) auto_increment primary key, 
+nombre varchar(30) binary not null, 
+user varchar(15) binary not null, 
+password varchar(10) binary not null, 
+email varchar(90) not null, 
+role int(1) default 1 not null)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+#tabla empleados
+create table empleados(
+id int(11) auto_increment primary key,
+nombre varchar(60) binary not null,
+cuil varchar(11) not null,
+f_nac date not null,
+nivel_grado varchar(2) not null,
+revista varchar(17) not null,
+sexo varchar(9) not null,
+nivel varchar(1) not null,
+sanciones varchar(2) not null,
+funcion_ejec varchar(2) not null,
+niv_func_ejec varchar(1) not null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
