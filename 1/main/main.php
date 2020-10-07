@@ -194,7 +194,7 @@ $(document).ready(function(){
 	if($_SESSION['user'] == 'root'){
 	echo '<a href="#" data-toggle="tooltip" data-placement="right" title="Cargar Agente"><button type="submit" class="btn btn-default btn-sm" name="A"><img class="img-reponsive img-rounded" src="../../icons/actions/user-group-new.png" /> Agente</button></a><hr>
 	<a href="#" data-toggle="tooltip" data-placement="right" title="Listar Agentes"><button type="submit" class="btn btn-default btn-sm" name="B"><img class="img-reponsive img-rounded" src="../../icons/apps/preferences-contact-list.png" /> Agentes</button></a><hr>
-	<a href="#" data-toggle="tooltip" data-placement="right" title="Subir Archivo"><button type="submit" class="btn btn-default btn-sm" name="C"><img class="img-reponsive img-rounded" src="../../icons/actions/svn-commit.png" /> Archivo</button></a><hr>';
+	<a href="#" data-toggle="tooltip" data-placement="right" title="Administración de Usuarios"><button type="submit" class="btn btn-default btn-sm" name="C"><img class="img-reponsive img-rounded" src="../../icons/actions/meeting-attending.png" /> Usuarios</button></a><hr>';
 	}else{
 	
 	echo '<a href="#" data-toggle="tooltip" data-placement="right" title="Editar datos Personales"><button type="submit" class="btn btn-default btn-sm" name="D"><img class="img-reponsive img-rounded" src="../../icons/actions/user-group-properties.png" /> Mis Datos</button></a><hr>
@@ -219,7 +219,7 @@ $(document).ready(function(){
 	      empleados($conn);
       }
       if(isset($_POST['C'])){
-	      //loadUser($conn,$nombre);
+	      usuarios($conn);
       }
       if(isset($_POST['D'])){
 	      loadUser($conn,$nombre);

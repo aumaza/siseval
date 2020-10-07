@@ -31,6 +31,7 @@ function skeleton(){
 	<script src="/siseval/skeleton/js/dataTables.select.min.js"></script>
 	<script src="/siseval/skeleton/js/dataTables.buttons.min.js"></script>
 	
+	<script src="/siseval/js/scrolling-nav.js"></script>
 	<script src="/siseval/skeleton/Chart.js/Chart.min.js"></script>
 	<script src="/siseval/skeleton/Chart.js/Chart.bundle.min.js"></script>
 	<script src="/siseval/skeleton/Chart.js/Chart.bundle.js"></script>
@@ -49,7 +50,7 @@ function cambiarPermisos($id,$role,$conn){
   $retval = mysqli_query($conn,$sql);
   if($retval){
     
-    echo "<br>";
+			echo "<br>";
 			echo '<div class="section"><br>
 			      <div class="container">
 			      <div class="row">
@@ -61,6 +62,7 @@ function cambiarPermisos($id,$role,$conn){
 			echo "</div>";
 			echo "</div>";
 			echo "</div>";
+			echo '<meta http-equiv="refresh" content="4;URL=../main/main.php "/>';
   
 	  }else{
 			echo "<br>";
@@ -75,6 +77,7 @@ function cambiarPermisos($id,$role,$conn){
 			echo "</div>";
 			echo "</div>";
 			echo "</div>";
+			echo '<meta http-equiv="refresh" content="4;URL=../main/main.php "/>';
 		}
  
 }
@@ -188,8 +191,7 @@ if($conn){
     	$resultado = mysqli_query($conn,$sql);
 	//mostramos fila x fila
 	$count = 0;
-	echo '<div class="container">
-	      <div class="alert alert-success">
+	echo '<div class="alert alert-success">
 	      <img src="../../icons/actions/user-group-properties.png"  class="img-reponsive img-rounded"> Mis Datos
 	      </div><br>';
 	
@@ -216,7 +218,7 @@ if($conn){
 
 		echo "</table>";
 		echo "<br>";
-		echo '</div>';
+		
 		}else{
 		  echo 'Connection Failure...';
 		}
@@ -479,8 +481,7 @@ if($conn){
     	$resultado = mysqli_query($conn,$sql);
 	//mostramos fila x fila
 	$count = 0;
-	echo '<div class="container">
-	      <div class="alert alert-success">
+	echo '<div class="alert alert-success">
 	      <img src="../../icons/actions/meeting-attending.png"  class="img-reponsive img-rounded"> Agentes
 	      </div><br>';
 	
@@ -518,8 +519,7 @@ if($conn){
 			 echo "<td class='text-nowrap'>";
 			 echo '<a href="../agentes/editar.php?id='.$fila['id'].'" class="btn btn-primary btn-sm " ><span class="glyphicon glyphicon-pencil"></span> Editar</a>';
 			 echo '<a href="#" data-href="../agentes/eliminar.php?id='.$fila['id'].'" data-toggle="modal" data-target="#confirm-delete" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Borrar</a>';
-			 echo '<a href="../agentes/upload.php?id='.$fila['id'].'" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-cloud-upload"></span> PDF</a>';
-			 echo '<a href="../agentes/download.php?file_name='.$fila['file_name'].'" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-cloud-download"></span> PDF</a>';
+			 echo '<a href="../agentes/evaluar.php?id='.$fila['id'].'" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-edit"></span> Evaluar</a>';
 			 echo "</td>";
 			 $count++;
 		}
@@ -527,7 +527,7 @@ if($conn){
 		echo "</table>";
 		echo "<br>";
 		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
-		echo '</div><br>';
+		echo '<hr>';
 		}else{
 		  echo 'Connection Failure...';
 		}
