@@ -978,6 +978,10 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    <div class="panel-heading">Formulario Nivel 1 - Fomulario de Evaluación</div>
 		    <div class="panel-body">
 		    
+		    <p>Cada uno de los Items a evaluar cuenta con 5 factores, cada factor tiene un valor asociado. El valor más alto está representado
+			por el primero de los factores y el más bajo por el quinto, dichos valores van del 4 al 0.
+			La sumatoria de los valores obtenidos en cada item darán un total el cuál será asociado a una Calificación final.</p><hr>
+		    
 		    <div class="form-group">
 		      <label for="sel1">1 - Planificación:</label>
 		      <select class="form-control" name="item1">
@@ -1304,6 +1308,10 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    <div class="panel panel-primary">
 		    <div class="panel-heading">Formulario Nivel 2 - Fomulario de Evaluación</div>
 		    <div class="panel-body">
+		    
+		    <p>Cada uno de los Items a evaluar cuenta con 5 factores, cada factor tiene un valor asociado. El valor más alto está representado
+			por el primero de los factores y el más bajo por el quinto, dichos valores van del 4 al 0.
+			La sumatoria de los valores obtenidos en cada item darán un total el cuál será asociado a una Calificación final.</p><hr>
 		    
 		    <div class="form-group">
 		      <label for="sel1">1 - Planificación:</label>
@@ -2472,9 +2480,21 @@ function resultadoForm1($nombre_agente,$item1,$item2,$item3,$item41,$item42,$ite
   </table><hr>
               
         <h3>Puntaje Total Obtenido: <strong>'.$sum.'</strong></h3><hr>
-        <h3>Calificación Final: <strong>'.$result.'<strong></h3>
+        <h3>Calificación Final: <strong>'.$result.'<strong></h3><hr>';
         
-        </div>
+        if($result == "Regular" || $result == "Deficiente"){
+        
+		echo '<div class="container">';
+		echo '<div class="alert alert-warning" role="alert">';
+		echo '<img src="../../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> Ante dicha Calificación deberá utilizar el Formulario B. Por favor completelo accediendo desde el botón aquí abajo';
+		echo '<hr><a href="../evaluaciones/formularioB.php" class="btn btn-primary btn-sm " ><span class="glyphicon glyphicon-list-alt"></span> Formulario B</a>';
+		echo "</div>";
+		echo "</div>";
+		
+	  
+        }
+        
+        echo '</div>
         <div class="panel-footer">
         <p style="text-align: center;""><strong>IMPORTANTE</strong></p><hr>
         <p>1. En caso que el agente haya obtenido una calificación "Regular" o "Deficiente" se deberá adjuntar el Formulario B con el Programa de Recuperación</p>
@@ -2567,9 +2587,21 @@ function resultadoForm2($nombre_agente,$item1,$item2,$item3,$item4,$item5,$item6
   </table><hr>
               
         <h3>Puntaje Total Obtenido: <strong>'.$sum.'</strong></h3><hr>
-        <h3>Calificación Final: <strong>'.$result.'<strong></h3>
+        <h3>Calificación Final: <strong>'.$result.'<strong></h3><hr>';
         
-        </div>
+        if($result == "Regular" || $result == "Deficiente"){
+        
+		echo '<div class="container">';
+		echo '<div class="alert alert-warning" role="alert">';
+		echo '<img src="../../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> Ante dicha Calificación deberá utilizar el Formulario B. Por favor completelo accediendo desde el botón aquí abajo';
+		echo '<hr><a href="../evaluaciones/formularioB.php" class="btn btn-primary btn-sm " ><span class="glyphicon glyphicon-list-alt"></span> Formulario B</a>';
+		echo "</div>";
+		echo "</div>";
+		
+	  
+        }
+        
+        echo '</div>
         <div class="panel-footer">
         <p style="text-align: center;""><strong>IMPORTANTE</strong></p><hr>
         <p>1. En caso que el agente haya obtenido una calificación "Regular" o "Deficiente" se deberá adjuntar el Formulario B con el Programa de Recuperación</p>
@@ -2661,9 +2693,21 @@ function resultadoForm3($nombre_agente,$item1,$item2,$item3,$item4,$item5,$item6
   </table><hr>
               
         <h3>Puntaje Total Obtenido: <strong>'.$sum.'</strong></h3><hr>
-        <h3>Calificación Final: <strong>'.$result.'<strong></h3>
+        <h3>Calificación Final: <strong>'.$result.'<strong></h3><hr>';
         
-        </div>
+        if($result == "Regular" || $result == "Deficiente"){
+        
+		echo '<div class="container">';
+		echo '<div class="alert alert-warning" role="alert">';
+		echo '<img src="../../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> Ante dicha Calificación deberá utilizar el Formulario B. Por favor completelo accediendo desde el botón aquí abajo';
+		echo '<hr><a href="../evaluaciones/formularioB.php" class="btn btn-primary btn-sm " ><span class="glyphicon glyphicon-list-alt"></span> Formulario B</a>';
+		echo "</div>";
+		echo "</div>";
+		
+	  
+        }
+        
+        echo '</div>
         <div class="panel-footer">
         <p style="text-align: center;""><strong>IMPORTANTE</strong></p><hr>
         <p>1. En caso que el agente haya obtenido una calificación "Regular" o "Deficiente" se deberá adjuntar el Formulario B con el Programa de Recuperación</p>
@@ -2747,9 +2791,21 @@ function resultadoForm4($nombre_agente,$item1,$item2,$item3,$item4,$item5,$item6
   </table><hr>
               
         <h3>Puntaje Total Obtenido: <strong>'.$sum.'</strong></h3><hr>
-        <h3>Calificación Final: <strong>'.$result.'<strong></h3>
+        <h3>Calificación Final: <strong>'.$result.'<strong></h3><hr>';
         
-        </div>
+        if($result == "Regular" || $result == "Deficiente"){
+        
+		echo '<div class="container">';
+		echo '<div class="alert alert-warning" role="alert">';
+		echo '<img src="../../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> Ante dicha Calificación deberá utilizar el Formulario B. Por favor completelo accediendo desde el botón aquí abajo';
+		echo '<hr><a href="../evaluaciones/formularioB.php" class="btn btn-primary btn-sm " ><span class="glyphicon glyphicon-list-alt"></span> Formulario B</a>';
+		echo "</div>";
+		echo "</div>";
+		
+	  
+        }
+        
+        echo '</div>
         <div class="panel-footer">
         <p style="text-align: center;""><strong>IMPORTANTE</strong></p><hr>
         <p>1. En caso que el agente haya obtenido una calificación "Regular" o "Deficiente" se deberá adjuntar el Formulario B con el Programa de Recuperación</p>
@@ -2825,9 +2881,21 @@ function resultadoForm5($nombre_agente,$item1,$item2,$item31,$item32,$item33,$it
   </table><hr>
               
         <h3>Puntaje Total Obtenido: <strong>'.$sum.'</strong></h3><hr>
-        <h3>Calificación Final: <strong>'.$result.'<strong></h3>
+        <h3>Calificación Final: <strong>'.$result.'<strong></h3><hr>';
         
-        </div>
+        if($result == "Regular" || $result == "Deficiente"){
+        
+		echo '<div class="container">';
+		echo '<div class="alert alert-warning" role="alert">';
+		echo '<img src="../../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> Ante dicha Calificación deberá utilizar el Formulario B. Por favor completelo accediendo desde el botón aquí abajo';
+		echo '<hr><a href="../evaluaciones/formularioB.php" class="btn btn-primary btn-sm " ><span class="glyphicon glyphicon-list-alt"></span> Formulario B</a>';
+		echo "</div>";
+		echo "</div>";
+		
+	  
+        }
+        
+        echo '</div>
         <div class="panel-footer">
         <p style="text-align: center;""><strong>IMPORTANTE</strong></p><hr>
         <p>1. En caso que el agente haya obtenido una calificación "Regular" o "Deficiente" se deberá adjuntar el Formulario B con el Programa de Recuperación</p>
