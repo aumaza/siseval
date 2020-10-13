@@ -69,11 +69,12 @@
                             $revista = mysqli_real_escape_string($conn,$_POST["revista"]);
                             $sexo = mysqli_real_escape_string($conn,$_POST["sexo"]);
                             $nivel = mysqli_real_escape_string($conn,$_POST["nivel"]);
+                            $estudios = mysqli_real_escape_string($conn,$_POST["estudios"]);
                             $func_ejec = mysqli_real_escape_string($conn,$_POST["func_ejec"]);
                             $niv_func_ejec = mysqli_real_escape_string($conn,$_POST["niv_func_ejec"]);
                             $sanciones = mysqli_real_escape_string($conn,$_POST["sanciones"]);
                                                         
-                             updateAgente($id,$nombre,$cuil,$f_nac,$nivel_grado,$revista,$sexo,$nivel,$func_ejec,$niv_func_ejec,$sanciones,$conn);
+                             updateAgente($id,$nombre,$cuil,$f_nac,$nivel_grado,$revista,$sexo,$nivel,$estudios,$func_ejec,$niv_func_ejec,$sanciones,$conn);
                         
 
                              }

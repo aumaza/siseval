@@ -10,20 +10,18 @@
 	echo '<br>';
 	echo "O no tiene permisos o no ha iniciado sesion...";
 	echo "</div>";
-	echo '<a href="../logout.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
+	echo '<a href="../../logout.php"><br><br><button type="submit" class="btn btn-primary">Aceptar</button></a>';	
 	die();
 	}
-
-
 
 ?>
 
 
 <html><head>
 	<meta charset="utf-8">
-	<title>Nuevo Registro</title>
+	<title>Eliminar Registro</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../../icons/actions/user-group-new.png" />
+	<link rel="icon" type="image/png" href="../../icons/actions/trash-empty.png" />
 	<?php skeleton();?>
 	
 </head>
@@ -56,26 +54,11 @@
        if($conn){
        
 	mysqli_select_db('siseval');
-	  	
-	     if (isset($_POST['A'])) {
-	     
-			    $nombre = mysqli_real_escape_string($conn,$_POST["nombre"]);
-                            $cuil = mysqli_real_escape_string($conn,$_POST["cuil"]);
-                            $f_nac = mysqli_real_escape_string($conn,$_POST["f_nac"]);
-                            $nivel_grado = mysqli_real_escape_string($conn,$_POST["nivel_grado"]);
-                            $revista = mysqli_real_escape_string($conn,$_POST["revista"]);
-                            $sexo = mysqli_real_escape_string($conn,$_POST["sexo"]);
-                            $nivel = mysqli_real_escape_string($conn,$_POST["nivel"]);
-                            $estudios = mysqli_real_escape_string($conn,$_POST["estudios"]);
-                            $func_ejec = mysqli_real_escape_string($conn,$_POST["func_ejec"]);
-                            $niv_func_ejec = mysqli_real_escape_string($conn,$_POST["niv_func_ejec"]);
-                            $sanciones = mysqli_real_escape_string($conn,$_POST["sanciones"]);
-                                                        
-                             addAgente($nombre,$cuil,$f_nac,$nivel_grado,$revista,$sexo,$nivel,$estudios,$func_ejec,$niv_func_ejec,$sanciones,$conn);
-                            }
-                            }else{
-			      mysqli_error($conn);
-                                }
+	$id = $_GET['id'];
+        delUser($id,$conn);
+        }else{
+	      mysqli_error($conn);
+        }
                                     
 
   //cerramos la conexion

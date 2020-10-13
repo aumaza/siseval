@@ -22,3 +22,43 @@ sanciones varchar(2) not null,
 funcion_ejec varchar(2) not null,
 niv_func_ejec varchar(1) not null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#tabla nivel_1
+create table nivel_1(
+id int(11) auto_increment primary key,
+jurisdiccion varchar(90) not null,
+secretaria varchar(90) not null,
+subsecretaria varchar(90) not null,
+direccion varchar(90) not null,
+unidad varchar(60) not null,
+unidad2 varchar(60) not null,
+cod_uni varchar(60) not null,
+evaluador varchar(60) not null,
+dni_evaluador varchar(11) not null,
+sit_esc_eval varchar(6) not null,
+niv_gr_eval varchar(3) not null,
+cargo_eval varchar(60) not null,
+agrup_eval varchar(25) not null,
+nombre_agente varchar(60) not null,
+dni_agente varchar(11) not null,
+legajo_agente varchar(11) not null,
+niv_gr_agente varchar(3) not null,
+agrup_agente varchar(25) not null,
+educacion varchar(13) not null,
+f_desde date not null,
+f_hasta date not null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#tabla evaluaciones
+create table evaluaciones(
+id int(11) auto_increment primary key,
+agente varchar(60) not null,
+dni varchar(11) not null,
+nivel_grado varchar(3) not null,
+revista varchar(17) not null,
+nivel varchar(1) not null,
+puntaje int(11) not null,
+calificacion varchar(13),
+f_desde date not null,
+f_hasta date not null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
