@@ -22,19 +22,7 @@
 	die();
 	}
 	
-	$id = $_GET['id'];
-	$sq = "select * from empleados where id = '$id'";
-	mysqli_select_db('siseval');
-	$qry = mysqli_query($conn,$sq);
-	while($fila = mysqli_fetch_array($qry)){
-	      $agente = $fila['nombre'];
-	      $nivel = $fila['nivel'];
-	      $niv_func_ejec = $fila['niv_func_ejec'];
-	      $cuil = $fila['cuil'];
-	      $nivel_grado = $fila['nivel_grado'];
-	      $estudios = $fila['estudios'];
-	      $revista = $fila['revista'];
-	}
+	
 	
 	
 ?>
@@ -121,42 +109,70 @@ $(document).ready(function(){
 
 
 <?php
+  
+  $nivel = mysqli_real_escape_string($conn,$_POST["nivel"]);
+  $revista = mysqli_real_escape_string($conn,$_POST["revista"]);
+  
+  $jurisdiccion = mysqli_real_escape_string($conn,$_POST["juris"]);
+  $secretaria = mysqli_real_escape_string($conn,$_POST["secretaria"]);
+  $subsecretaria = mysqli_real_escape_string($conn,$_POST["subsecretaria"]);
+  $direccion = mysqli_real_escape_string($conn,$_POST["direccion"]);
+  $unidad = mysqli_real_escape_string($conn,$_POST["unidad"]);
+  $unidad2 = mysqli_real_escape_string($conn,$_POST["unidad2"]);
+  $cod_uni = mysqli_real_escape_string($conn,$_POST["cod_uni"]);
+  $nom_eval = mysqli_real_escape_string($conn,$_POST["nombre_evaluador"]);
+  $dni_eval = mysqli_real_escape_string($conn,$_POST["dni_evaluador"]);
+  $sit_esc_eval = mysqli_real_escape_string($conn,$_POST["sit_esc_eval"]);
+  $niv_gr_eval = mysqli_real_escape_string($conn,$_POST["nivel_grado_eval"]);
+  $agrup_eval = mysqli_real_escape_string($conn,$_POST["agrupamiento_eval"]);
+  $cargo_eval = mysqli_real_escape_string($conn,$_POST["cargo_eval"]);
+  $nombre_agente = mysqli_real_escape_string($conn,$_POST["nombre_agente"]);
+  $dni_agente = mysqli_real_escape_string($conn,$_POST["dni_agente"]);
+  $leg_agente = mysqli_real_escape_string($conn,$_POST["legajo_agente"]);
+  $ng_agente = mysqli_real_escape_string($conn,$_POST["ng_agente"]);
+  $agrupamiento2 = mysqli_real_escape_string($conn,$_POST["agrupamiento2"]);
+  $educacion = mysqli_real_escape_string($conn,$_POST["educacion"]);
+  $f_desde = mysqli_real_escape_string($conn,$_POST["f_desde"]);
+  $f_hasta = mysqli_real_escape_string($conn,$_POST["f_hasta"]);
+  
+  //addEvalNiv1($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad,$unidad2,$cod_uni,$nom_eval,$dni_eval,$sit_esc_eval,$niv_gr_eval,$agrup_eval,$cargo_eval,$nombre_agente,$dni_agente,$leg_agente,$ng_agente,$agrupamiento2,$educacion,$f_desde,$f_hasta,$conn);
+
+  $item11 = mysqli_real_escape_string($conn,$_POST["item11"]);
+  $item12 = mysqli_real_escape_string($conn,$_POST["item12"]);
+  $item13 = mysqli_real_escape_string($conn,$_POST["item13"]);
+  $item2 = mysqli_real_escape_string($conn,$_POST["item2"]);
+  $item3 = mysqli_real_escape_string($conn,$_POST["item3"]);
+  $item4 = mysqli_real_escape_string($conn,$_POST["item4"]);
+  
+  
+  
+  $sum = $item11+$item12+$item13+$item2+$item3+$item4;
+  
+  if($sum >= 0 && $sum <= 3){
+      $result = "Deficiente";
+  }
+  if($sum >= 4 && $sum <= 9){
+      $result = "Regular";
+  }
+  if($sum >= 10 && $sum <= 15){
+      $result = "Bueno";
+  }
+  if($sum >= 16 && $sum <= 21){
+      $result = "Muy Bueno";
+  }
+  if($sum >= 22 && $sum <= 24){
+      $result = "Destacado";
+  }
+  
+  //addEvaluacion($nombre_agente,$dni_agente,$ng_agente,$revista,$nivel,$sum,$result,$f_desde,$f_hasta,$conn);
 
 if($conn){
 
-  if($nivel == 1 && $niv_func_ejec >= 1 && $niv_func_ejec <= 4){
-
-      formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista);
+    if(isset($_POST['A'])){
+        resultadoForm6($nombre_agente,$item11,$item12,$item13,$item2,$item3,$item4,$sum,$result,$f_desde,$f_hasta);
+        }
       
-      }
-      if($nivel == 2 && $niv_func_ejec == 5){
-      
-      formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista);
-      
-      }
-      if($nivel == 3 && $niv_func_ejec == 5){
-      
-      formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista);
-      
-      }
-      if($nivel == 4 && $niv_func_ejec == 0){
-      
-      formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista);
-      
-      }
-      if($nivel == 5 && $niv_func_ejec == 0){
-      
-      formulario5($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista);
-      
-      }
-      if($nivel == 6 && $niv_func_ejec == 0){
-      
-      formulario6($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista);
-      
-      }
-
-
-}else{
+  }else{
   echo "Database Error Connection!!" .mysqli_error($conn);
 }
 ?>

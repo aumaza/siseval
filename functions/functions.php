@@ -313,12 +313,12 @@ function newAgente(){
 		  <label for="sel1">Nivel:</label>
 		  <select class="form-control" name="nivel">
 		    <option value="" disabled selected>Seleccionar</option>
-		    <option value="1">Gerencial</option>
-		    <option value="2">Medio Profesional/Técnico con personal a cargo</option>
-		    <option value="3">Medio con personal a cargo</option>
-		    <option value="4">Medio sin personal a cargo</option>
-		    <option value="5">Operativo con personal a cargo</option>
-		    <option value="6">Operativo sin personal a cargo</option>
+		    <option value="1">1 - Gerencial</option>
+		    <option value="2">2 - Medio Profesional/Técnico con personal a cargo</option>
+		    <option value="3">3 - Medio con personal a cargo</option>
+		    <option value="4">4 - Medio sin personal a cargo</option>
+		    <option value="5">5 - Operativo con personal a cargo</option>
+		    <option value="6">6 - Operativo sin personal a cargo</option>
 		  </select>
 		  </div>
 		  
@@ -437,12 +437,12 @@ function editAgente($id,$conn){
 		  <label for="sel1">Nivel:</label>
 		  <select class="form-control" name="nivel">
 		    <option value="" disabled selected>Seleccionar</option>
-		    <option value="1" '.($fila['nivel'] == "1" ? "selected" : ""). '>Gerencial</option>
-		    <option value="2" '.($fila['nivel'] == "2" ? "selected" : ""). '>Medio Profesional/Técnico con personal a cargo</option>
-		    <option value="3" '.($fila['nivel'] == "3" ? "selected" : ""). '>Medio con personal a cargo</option>
-		    <option value="4" '.($fila['nivel'] == "4" ? "selected" : ""). '>Medio sin personal a cargo</option>
-		    <option value="5" '.($fila['nivel'] == "5" ? "selected" : ""). '>Operativo con personal a cargo</option>
-		    <option value="6" '.($fila['nivel'] == "6" ? "selected" : ""). '>Operativo sin personal a cargo</option>
+		    <option value="1" '.($fila['nivel'] == "1" ? "selected" : ""). '>1 - Gerencial</option>
+		    <option value="2" '.($fila['nivel'] == "2" ? "selected" : ""). '>2 - Medio Profesional/Técnico con personal a cargo</option>
+		    <option value="3" '.($fila['nivel'] == "3" ? "selected" : ""). '>3 - Medio con personal a cargo</option>
+		    <option value="4" '.($fila['nivel'] == "4" ? "selected" : ""). '>4 - Medio sin personal a cargo</option>
+		    <option value="5" '.($fila['nivel'] == "5" ? "selected" : ""). '>5 - Operativo con personal a cargo</option>
+		    <option value="6" '.($fila['nivel'] == "6" ? "selected" : ""). '>6 - Operativo sin personal a cargo</option>
 		  </select>
 		  </div>
 		  
@@ -984,7 +984,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">1 - Planificación:</label>
-		      <select class="form-control" name="item1">
+		      <select class="form-control" name="item1" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Planificación Altamente Eficiente</option>
 			<option value="3">2 - Muy Buenos Programas y cursos de Acción</option>
@@ -996,7 +996,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">2 - Gestión de Planes y Programas:</label>
-		      <select class="form-control" name="item2">
+		      <select class="form-control" name="item2" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Logra el total cumplimiento eficaz de los objetivos</option>
 			<option value="3">2 - Logra buen cumplimiento de los objetivos y metas propuestos</option>
@@ -1008,7 +1008,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">3 - Control de Resultados:</label>
-		      <select class="form-control" name="item3">
+		      <select class="form-control" name="item3" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Controla de manera excelente la gestión de su área</option>
 			<option value="3">2 - Controla la gestión de su área de manera muy eficiente</option>
@@ -1020,7 +1020,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">4.1 - Organización del Trabajo:</label>
-		      <select class="form-control" name="item41">
+		      <select class="form-control" name="item41" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente capacidad organizativa</option>
 			<option value="3">2 - Muy buena capacidad organizativa y de asignación de recursos</option>
@@ -1032,7 +1032,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">4.2 - Resolver Problemas:</label>
-		      <select class="form-control" name="item42">
+		      <select class="form-control" name="item42" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente habilidad para descomponer y analizar situaciones problemáticas</option>
 			<option value="3">2 - Muy buena capacidad para analizar y resolver problemas</option>
@@ -1044,7 +1044,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">5 - Conducción:</label>
-		      <select class="form-control" name="item5">
+		      <select class="form-control" name="item5" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente habilidad para dirigir y coordinar grupos de trabajo</option>
 			<option value="3">2 - Muy buen criterio para dirigir</option>
@@ -1056,7 +1056,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">6.1 - Asumir representación interna y externa:</label>
-		      <select class="form-control" name="item61">
+		      <select class="form-control" name="item61" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Gran capacidad para relacionarse con el contexto y representar a su área</option>
 			<option value="3">2 - Muy buena capacidad para representar a su área</option>
@@ -1068,7 +1068,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">6.2 - Cerrar Transacciones:</label>
-		      <select class="form-control" name="item62">
+		      <select class="form-control" name="item62" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Notable facilidad para conducir negociaciones</option>
 			<option value="3">2 - Conduce habilidosamente y concreta los procesos de negociación con muy buenos resultados</option>
@@ -1080,7 +1080,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">7.1 - Interpretación y predicción del contexto:</label>
-		      <select class="form-control" name="item71">
+		      <select class="form-control" name="item71" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Optima lectura de la realidad</option>
 			<option value="3">2 - Realiza lecturas muy acertadas de la realidad en términos de ventajas y desventajas</option>
@@ -1092,7 +1092,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">7.2 - Maximizar Oportunidades:</label>
-		      <select class="form-control" name="item72">
+		      <select class="form-control" name="item72" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente habilidad para aprovechar oportunidades en la programacón de su área</option>
 			<option value="3">2 - Aprovecha muy bien las oportunidades del contexto</option>
@@ -1104,7 +1104,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">8 - Iniciativa:</label>
-		      <select class="form-control" name="item8">
+		      <select class="form-control" name="item8" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Notablemente capaz para generar acciones oportunas</option>
 			<option value="3">2 - Muy buena capacidad para actuar oportunamente</option>
@@ -1116,7 +1116,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">9 - Adaptabilidad:</label>
-		      <select class="form-control" name="item9">
+		      <select class="form-control" name="item9" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Demuestra absoluta apertura para asimilar los cambios y para generar rápidamente cursos de acción</option>
 			<option value="3">2 - Comprende los cambios rápidamente y sin dificultades</option>
@@ -1128,7 +1128,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">10 - Autonomía:</label>
-		      <select class="form-control" name="item10">
+		      <select class="form-control" name="item10" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Casi siempre se maneja con gran independencia, tomando las decisiones con total responsabilidad</option>
 			<option value="3">2 - Generalmente muestra independencia, tomando decisiones bajo su propia responsabilidad</option>
@@ -1140,7 +1140,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">11 - Identificación con la Organización:</label>
-		      <select class="form-control" name="item11">
+		      <select class="form-control" name="item11" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Su desempeño está permanentemente comprometido con los fines de la organización</option>
 			<option value="3">2 - Muy buen nivel de compromiso con los fines de la organización</option>
@@ -1315,7 +1315,7 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">1 - Planificación:</label>
-		      <select class="form-control" name="item1">
+		      <select class="form-control" name="item1" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Planificación Altamente Eficiente</option>
 			<option value="3">2 - Muy Buenos Programas y cursos de Acción</option>
@@ -1327,7 +1327,7 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">2 - Gestión de Control de Programas y Planes:</label>
-		      <select class="form-control" name="item2">
+		      <select class="form-control" name="item2" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente capacidad para cumplir eficazmente los objetivos</option>
 			<option value="3">2 - Logra buen cumplimiento de los objetivos y metas propuestos</option>
@@ -1339,7 +1339,7 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		     <div class="form-group">
 		      <label for="sel1">3 - Organización del Trabajo:</label>
-		      <select class="form-control" name="item3">
+		      <select class="form-control" name="item3" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente capacidad organizativa</option>
 			<option value="3">2 - Muy buena capacidad organizativa y de asignación de recursos</option>
@@ -1351,7 +1351,7 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">4 - Conducción:</label>
-		      <select class="form-control" name="item4">
+		      <select class="form-control" name="item4" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente habilidad para dirigir y coordinar grupos de trabajo</option>
 			<option value="3">2 - Muy buen criterio para dirigir y coordinar</option>
@@ -1363,7 +1363,7 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">5 - Competencias Profesionales para la Función:</label>
-		      <select class="form-control" name="item5">
+		      <select class="form-control" name="item5" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente nivel de formación y actualización que aplca eficientemente en todas las fases del trabajo</option>
 			<option value="3">2 - Muy buen nivel de formación y actualización, realiza su trabajo con solvencia profesional</option>
@@ -1375,7 +1375,7 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">6 - Creatividad:</label>
-		      <select class="form-control" name="item6">
+		      <select class="form-control" name="item6" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Notablemente capaz para generar permanentemente propuestas factibles de ser aplicadas</option>
 			<option value="3">2 - Muy buena capacidad para proponer enfoques novedosos y factibles y desarrollar su propuesta en marcha</option>
@@ -1387,7 +1387,7 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">7 - Resolver Problemas:</label>
-		      <select class="form-control" name="item7">
+		      <select class="form-control" name="item7" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente habilidad para descomponer las situaciones problemáticas</option>
 			<option value="3">2 - Muy Buena capacidad para resolver los problemas de su área de modo que estos no lo superen</option>
@@ -1399,7 +1399,7 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">8 - Interés por el Trabajo:</label>
-		      <select class="form-control" name="item8">
+		      <select class="form-control" name="item8" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excepcional compromiso. Se cuenta siempre con su ayuda en momentos de mayor presión y/o dificultad</option>
 			<option value="3">2 - Muy buen nivel de compromiso con la tarea</option>
@@ -1411,7 +1411,7 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">9 - Actitud formativa:</label>
-		      <select class="form-control" name="item9">
+		      <select class="form-control" name="item9" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente predisposición para la actualización y formación</option>
 			<option value="3">2 - Muy buena predisposición para la actualización y formación</option>
@@ -1423,7 +1423,7 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">10 - Capacidad Analítica:</label>
-		      <select class="form-control" name="item10">
+		      <select class="form-control" name="item10" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Sobresaliente por su aptitud analítica</option>
 			<option value="3">2 - Analiza integralmente las situaciones sometidas a su estudio</option>
@@ -1435,7 +1435,7 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">11 - Capacidad de Asesoramiento e Información:</label>
-		      <select class="form-control" name="item11">
+		      <select class="form-control" name="item11" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente aptitud para brindar información clara y precisa</option>
 			<option value="3">2 - Buen nivel de asesoramiento</option>
@@ -1447,7 +1447,7 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">12 - Adaptabilidad:</label>
-		      <select class="form-control" name="item12">
+		      <select class="form-control" name="item12" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Encara con mucha soltura situaciones nuevas o cambiantes y siempre se involucra dinámicamente</option>
 			<option value="3">2 - Comprende los cambios rápidamente y sin dificultad, actuando consecuntemente en la elaboración de respuestas pertinentes</option>
@@ -1622,7 +1622,7 @@ function formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">1 - Planificación:</label>
-		      <select class="form-control" name="item1">
+		      <select class="form-control" name="item1" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Planificación Altamente Eficiente</option>
 			<option value="3">2 - Muy Buenos Programas y cursos de Acción</option>
@@ -1634,7 +1634,7 @@ function formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">2 - Gestión de Control de Programas y Planes:</label>
-		      <select class="form-control" name="item2">
+		      <select class="form-control" name="item2" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente capacidad para cumplir eficazmente los objetivos</option>
 			<option value="3">2 - Muy Buena capacidad para alcanzar los objetivos y metas propuestos</option>
@@ -1646,7 +1646,7 @@ function formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		     <div class="form-group">
 		      <label for="sel1">3 - Organización del Trabajo:</label>
-		      <select class="form-control" name="item3">
+		      <select class="form-control" name="item3" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente capacidad organizativa</option>
 			<option value="3">2 - Muy buena capacidad organizativa y de asignación de recursos</option>
@@ -1658,7 +1658,7 @@ function formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">4 - Conducción:</label>
-		      <select class="form-control" name="item4">
+		      <select class="form-control" name="item4" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente habilidad para dirigir y coordinar grupos de trabajo</option>
 			<option value="3">2 - Muy buen criterio para dirigir y coordinar</option>
@@ -1670,7 +1670,7 @@ function formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">5 - Competencias para la Función:</label>
-		      <select class="form-control" name="item5">
+		      <select class="form-control" name="item5" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Conoce plenamente el contenido de su función</option>
 			<option value="3">2 - Muy buen nivel de conocimientos, técnicas, habilidades y procedimientos requeridos para su función</option>
@@ -1682,7 +1682,7 @@ function formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">6 - Iniciativa:</label>
-		      <select class="form-control" name="item6">
+		      <select class="form-control" name="item6" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Notablemente capaz para generar acciones oportunas asumiendo los riesgos necesarios</option>
 			<option value="3">2 - Muy buena capacidad para actuar oportunamente asumiendo los riesgos necesarios</option>
@@ -1694,7 +1694,7 @@ function formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">7 - Resolver Problemas:</label>
-		      <select class="form-control" name="item7">
+		      <select class="form-control" name="item7" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente habilidad para descomponer las situaciones problemáticas</option>
 			<option value="3">2 - Muy Buena capacidad para resolver los problemas de su área de modo que estos no lo superen</option>
@@ -1706,7 +1706,7 @@ function formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">8 - Interés por el Trabajo:</label>
-		      <select class="form-control" name="item8">
+		      <select class="form-control" name="item8" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excepcional compromiso. Se cuenta siempre con su ayuda en momentos de mayor presión y/o dificultad</option>
 			<option value="3">2 - Muy buen nivel de compromiso con la tarea</option>
@@ -1718,7 +1718,7 @@ function formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">9 - Actitud formativa:</label>
-		      <select class="form-control" name="item9">
+		      <select class="form-control" name="item9" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Considera que la formación y capacitación son esenciales y trata de adquirirla y proporcionarla a sus subordinados</option>
 			<option value="3">2 - Demuestra mucho interés en el desarrollo propio y de sus colaboradores</option>
@@ -1730,7 +1730,7 @@ function formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">10 - Comunicación:</label>
-		      <select class="form-control" name="item10">
+		      <select class="form-control" name="item10" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - En general siempre establece una buena comunicación con sus pares, superiores y subordinados</option>
 			<option value="3">2 - Muy buena habilidad para comunicarse con sus pares, superiores o subordinados</option>
@@ -1742,7 +1742,7 @@ function formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">11 - Colaboración:</label>
-		      <select class="form-control" name="item11">
+		      <select class="form-control" name="item11" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Ofrece permanentemente su colaboración ante cada circunstancia y problema</option>
 			<option value="3">2 - Está muy dispuesto/a a colaborar</option>
@@ -1754,7 +1754,7 @@ function formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">12 - Adaptabilidad:</label>
-		      <select class="form-control" name="item12">
+		      <select class="form-control" name="item12" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Encara con mucha soltura situaciones nuevas o cambiantes y siempre se involucra dinámicamente</option>
 			<option value="3">2 - Comprende los cambios rápidamente y sin dificultad, actuando consecuntemente en la elaboración de respuestas pertinentes</option>
@@ -1931,7 +1931,7 @@ function formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">1 - Competencias Profesionales para la Función:</label>
-		      <select class="form-control" name="item1">
+		      <select class="form-control" name="item1" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente nivel de formacion y actualización que aplica eficientemente en todas las fases de su trabajo</option>
 			<option value="3">2 - Muy buen nivel de formación y actualización, realiza su trabajo con solvencia profesional</option>
@@ -1943,7 +1943,7 @@ function formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">2 - Creatividad:</label>
-		      <select class="form-control" name="item2">
+		      <select class="form-control" name="item2" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Notablemente capaz para generar permanentemente propuestas factibles de ser aplicadas</option>
 			<option value="3">2 - Muy buena capacidad para proponer enfoques novedosos y factibles para desarrollar su propuesta en marcha</option>
@@ -1955,7 +1955,7 @@ function formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		     <div class="form-group">
 		      <label for="sel1">3 - Resolver Problemas:</label>
-		      <select class="form-control" name="item3">
+		      <select class="form-control" name="item3" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente habilidad para descomponer las situaciones problemáticas</option>
 			<option value="3">2 - Muy Buena capacidad para resolver los problemas de su área de modo que estos no lo superen</option>
@@ -1967,7 +1967,7 @@ function formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">4 - Cumplimiento con el Trabajo:</label>
-		      <select class="form-control" name="item4">
+		      <select class="form-control" name="item4" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Optimo cumplimiento en tiempo y forma de todas las tareas que se le encargan con excelentes resultadas</option>
 			<option value="3">2 - Buen manejo de los plazos de tiempo y muy buenos resultados en el cumplimiento de las metas de trabajo</option>
@@ -1979,7 +1979,7 @@ function formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">5 - Capacidad Analítica:</label>
-		      <select class="form-control" name="item5">
+		      <select class="form-control" name="item5" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Sobresaliente aptitud analítica</option>
 			<option value="3">2 - Analiza integralmente las situaciones sometidas a su estudio</option>
@@ -1991,7 +1991,7 @@ function formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">6 - Capacidad de Asesoramiento:</label>
-		      <select class="form-control" name="item6">
+		      <select class="form-control" name="item6" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente aptitud para brindar información clara y precisa</option>
 			<option value="3">2 - Buen nivel de asesoramiento</option>
@@ -2003,7 +2003,7 @@ function formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">7 - Actitud Formativa:</label>
-		      <select class="form-control" name="item7">
+		      <select class="form-control" name="item7" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente predisposición para la actualización y formación</option>
 			<option value="3">2 - Muy buena predisposición para la actualización y formación</option>
@@ -2015,7 +2015,7 @@ function formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">8 - Interés por el Trabajo:</label>
-		      <select class="form-control" name="item8">
+		      <select class="form-control" name="item8" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excepcional compromiso. Se cuenta siempre con su ayuda en momentos de mayor presión y/o dificultad</option>
 			<option value="3">2 - Muy buen nivel de compromiso con la tarea</option>
@@ -2027,7 +2027,7 @@ function formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">9 - Colaboración</label>
-		      <select class="form-control" name="item9">
+		      <select class="form-control" name="item9" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente colaborador con sus superiores y sus pares, gran facilidad para integrarse activamente en equipos de trabajo</option>
 			<option value="3">2 - Muy buena disposición para colaborar individualmente o cuando integra grupos de trabajo</option>
@@ -2039,7 +2039,7 @@ function formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">10 - Adaptabilidad:</label>
-		      <select class="form-control" name="item10">
+		      <select class="form-control" name="item10" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Encara con mucha soltura situaciones nuevas o cambiantes y siempre se involucra dinámicamente</option>
 			<option value="3">2 - Comprende los cambios rápidamente y sin dificultades</option>
@@ -2218,7 +2218,7 @@ function formulario5($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">1 - Organización:</label>
-		      <select class="form-control" name="item1">
+		      <select class="form-control" name="item1" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente Capacidad organizativa</option>
 			<option value="3">2 - Tiene muy buena capacidad organizativa y de asignación de recursos, supera los requerimientos normales del puesto</option>
@@ -2230,7 +2230,7 @@ function formulario5($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">2 - Supervisación:</label>
-		      <select class="form-control" name="item2">
+		      <select class="form-control" name="item2" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excepcional habilidad para supervisar personas o grupos de trabajo</option>
 			<option value="3">2 - Buen criterio para supervisar. Logra muy buenos resultados de conjunto</option>
@@ -2242,7 +2242,7 @@ function formulario5($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		     <div class="form-group">
 		      <label for="sel1">3.1 - Cantidad de Trabajo:</label>
-		      <select class="form-control" name="item31">
+		      <select class="form-control" name="item31" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Rendimiento excepcionalmente alto. Sobrepasa los márgenes requeridos normalmente en su puesto</option>
 			<option value="3">2 - Siempre alcanza y frecuentemente supera el rendimiento requerido en los plazos previstos</option>
@@ -2254,7 +2254,7 @@ function formulario5($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">3.2 - Calidad de Trabajo:</label>
-		      <select class="form-control" name="item32">
+		      <select class="form-control" name="item32" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excepcional nivel de calidad de trabajo</option>
 			<option value="3">2 - Muy buen nivel de calidad de trabajo</option>
@@ -2266,7 +2266,7 @@ function formulario5($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">3.3 - Manejo de Recursos:</label>
-		      <select class="form-control" name="item33">
+		      <select class="form-control" name="item33" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelete manejo de los recursos asignados a su puesto</option>
 			<option value="3">2 - Muy efectivo para administrar recursos y reducir costos, mejorar métodos, procedimientos y técnicas</option>
@@ -2278,7 +2278,7 @@ function formulario5($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">4 - Conocimientos de las Tareas:</label>
-		      <select class="form-control" name="item4">
+		      <select class="form-control" name="item4" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excepcional dominio de todas las fases de su trabajo</option>
 			<option value="3">2 - Buen dominio de las fases de su trabajo y sólidos conocimientos de sus tareas</option>
@@ -2290,7 +2290,7 @@ function formulario5($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">5 - Criterio:</label>
-		      <select class="form-control" name="item5">
+		      <select class="form-control" name="item5" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excepcional capacidad para comprender las pautas de trabajo y actuar en consecuencia</option>
 			<option value="3">2 - Muy buena capacidad de comprensión de las pautas de trabajo que le permite actuar minimizando los errores</option>
@@ -2302,7 +2302,246 @@ function formulario5($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="sel1">6 - Colaboracion:</label>
-		      <select class="form-control" name="item6">
+		      <select class="form-control" name="item6" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4">1 - Excelente disposición a cooperar ante cada circunstacia o problema que se presente</option>
+			<option value="3">2 - Muy dispuesto/a  a cooperar. En general es requerido por su actitud que es reconocida y valorada</option>
+			<option value="2">3 - Coopera con sus jefes y compañeros</option>
+			<option value="1">4 - Dispuesto a prestar ayuda sólo en algunos casos. Prefiere no trabajar en equipo</option>
+			<option value="0">5 - Siempre tiene dificultades para cooperar con sus pares y superiores</option>
+		      </select>
+		    </div><hr>
+		     
+		    
+		    </div>
+		    <div class="panel-footer">
+		    <p><strong>Importante:</strong> Antes de presionar "Continuar" verifíque que cada uno de los items que han sido seleccionados sean los correctos.-</p><hr>
+		    <button type="submit" class="btn btn-success btn-block" name="A"><img src="../../icons/actions/go-next.png"  class="img-reponsive img-rounded"> Continuar</button>
+		      </form> <br></div>
+		  </div>
+		</div>
+	     
+	     
+	      </div>';
+
+}
+
+
+/*
+** Formulario Nivel 6 - Operativo sin Personal a cargo
+*/
+function formulario6($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
+
+        echo '<div class="container-fluid"
+		<div class="row">
+		  <div class="col-sm-6">
+		    <div class="panel panel-primary">
+		    <div class="panel-heading">Formulario Nivel 6 Operativo sin Personal a Cargo - Datos del Agente:  '.$agente.'</div>
+		    <div class="panel-body">
+		    <p>Serán evaluados en este nivel los agentes no incluídos en los niveles anteriores
+			El personal con atención al público será evaluado teniendo en cuenta esta circunstancia.</p><hr>
+			
+			<h3><strong>Identificación del Organismo en el que revista según estructura</strong></h3><hr>
+		    
+		    <form action="../evaluaciones/resultadoForm6.php" method="POST">
+		    <input type="hidden" id="id" name="nivel" value="'.$nivel.'" />
+		     <input type="hidden" id="id" name="revista" value="'.$revista.'" />
+		   
+		   <div class="form-group">
+		      <label for="nombre">Juriscidicción/Org. Descentralizado</label>
+		      <input type="text" class="form-control" id="nombre" name="juris" onKeyDown="limitText(this,60);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Secretaría / Gerencia</label>
+		      <input type="text" class="form-control" id="nombre" name="secretaria" onKeyDown="limitText(this,60);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Subsecretaría</label>
+		      <input type="text" class="form-control" id="nombre" name="subsecretaria" onKeyDown="limitText(this,60);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Dirección Nacional / General</label>
+		      <input type="text" class="form-control" id="nombre" name="direccion" onKeyDown="limitText(this,60);" required>
+		    </div><hr>
+			
+		    <div class="form-group">
+		      <label for="nombre">Unidad</label>
+		      <input type="text" class="form-control" id="nombre" name="unidad" onKeyDown="limitText(this,60);" required>
+		    </div><hr>
+		    
+		    <h3><strong>Para casos en que el Agente preste servicios en otra Unidad de Evaluación diferente a la de revista</strong></h3><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Unidad de Evaluación</label>
+		      <input type="text" class="form-control" id="nombre" name="unidad2" onKeyDown="limitText(this,60);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Código Unidad de Evaluación</label>
+		      <input type="text" class="form-control" id="nombre" name="cod_uni" onKeyDown="limitText(this,6);" required>
+		    </div><hr>
+		    
+		    <h3><strong>Identificación del Evaluador</strong></h3><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Apellido y Nombre</label>
+		      <input type="text" class="form-control" id="nombre" name="nombre_evaluador" onKeyDown="limitText(this,60);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">DNI</label>
+		      <input type="text" class="form-control" id="nombre" name="dni_evaluador" onKeyDown="limitText(this,8);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">Situacion Escalafonaria:</label>
+		      <select class="form-control" name="sit_esc_eval">
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="Otra">Otra</option>
+			<option value="SINEP">SINAPA/SINEP</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Nivel y Grado</label>
+		      <input type="text" class="form-control" id="nombre" name="nivel_grado_eval" onKeyDown="limitText(this,3);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Agrupamiento</label>
+		      <input type="text" class="form-control" id="nombre" name="agrupamiento_eval" onKeyDown="limitText(this,25);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Cargo que Ocupa</label>
+		      <input type="text" class="form-control" id="nombre" name="cargo_eval" onKeyDown="limitText(this,60);" required>
+		    </div><hr>
+		    
+		    <h3><strong>Identificación del Agente</strong></h3><hr>
+		    
+		     <div class="form-group">
+		      <label for="nombre">Apellido y Nombre</label>
+		      <input type="text" class="form-control" id="nombre" name="nombre_agente" onKeyDown="limitText(this,60);" value="'.$agente.'" required readonly>
+		     </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">DNI / CUIL</label>
+		      <input type="text" class="form-control" id="nombre" name="dni_agente" onKeyDown="limitText(this,11);" value="'.$cuil.'" required readonly>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Legajo</label>
+		      <input type="text" class="form-control" id="nombre" name="legajo_agente" onKeyDown="limitText(this,15);" required>
+		     </div><hr>
+		     
+		     <div class="form-group">
+		      <label for="nombre">Nivel y Grado</label>
+		      <input type="text" class="form-control" id="nombre" name="ng_agente" onKeyDown="limitText(this,3);" value="'.$nivel_grado.'" required readonly>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Agrupamiento</label>
+		      <input type="text" class="form-control" id="nombre" name="agrupamiento2" onKeyDown="limitText(this,25);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Nivel Educativo</label>
+		      <input type="text" class="form-control" id="nombre" name="educacion" onKeyDown="limitText(this,13);" value="'.$estudios.'" required readonly>
+		    </div><hr>
+		    
+		    <h3><strong>Período Evaluado</strong></h3><hr>
+		    
+		    <div class="form-group">
+		      <label for="f_nac">Fecha Desde</label>
+		      <input type="date" class="form-control" id="f_desde" name="f_desde" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="f_nac">Fecha Hasta</label>
+		      <input type="date" class="form-control" id="f_hasta" name="f_hasta" required>
+		    </div><hr>
+		    
+		    </div>
+		    <div class="panel-footer"><p><strong>Importante: No olvide completar ninguno de los datos anteriores y verificar que son los correctos.-</strong></p></div>
+		  </div>
+		</div>
+	      
+		  <div class="col-sm-6">
+		    <div class="panel panel-primary">
+		    <div class="panel-heading">Formulario Nivel 6 - Fomulario de Evaluación</div>
+		    <div class="panel-body">
+		    
+		    <p>Cada uno de los Items a evaluar cuenta con 5 factores, cada factor tiene un valor asociado. El valor más alto está representado
+			por el primero de los factores y el más bajo por el quinto, dichos valores van del 4 al 0.
+			La sumatoria de los valores obtenidos en cada item darán un total el cuál será asociado a una Calificación final.</p><hr>
+		    
+		    
+		     <div class="form-group">
+		      <label for="sel1">1.1 - Cantidad de Trabajo:</label>
+		      <select class="form-control" name="item11" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4">1 - Rendimiento excepcionalmente alto. Sobrepasa los márgenes requeridos normalmente en su puesto</option>
+			<option value="3">2 - Siempre alcanza y frecuentemente supera el rendimiento requerido en los plazos previstos</option>
+			<option value="2">3 - Alcanza los niveles normales de trabajo a un ritmo aceptable y en los plazos establecidos</option>
+			<option value="1">4 - Su rendieminto está por debajo de los niveles requeridos</option>
+			<option value="0">5 - Su rendimiento está muy por debajo de los requerimientos.</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">1.2 - Calidad de Trabajo:</label>
+		      <select class="form-control" name="item12" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4">1 - Excepcional nivel de calidad de trabajo</option>
+			<option value="3">2 - Muy buen nivel de calidad de trabajo</option>
+			<option value="2">3 - Adecuado nivel de calidad de trabajo</option>
+			<option value="1">4 - Tiene dificultades para realizar su trabajo con la calidad requerida</option>
+			<option value="0">5 - Falta de calidad en la realización de su trabajo. Necesita constante monitoreo</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">1.3 - Manejo de Recursos:</label>
+		      <select class="form-control" name="item13" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4">1 - Excelete manejo de los recursos asignados a su puesto</option>
+			<option value="3">2 - Muy efectivo para administrar recursos y reducir costos, mejorar métodos, procedimientos y técnicas</option>
+			<option value="2">3 - Buen sentido de la admnistración de los recursos</option>
+			<option value="1">4 - Tiene dificultades para administrar apropiadamente los recursos asignados a su puesto</option>
+			<option value="0">5 - No aprovecha los recursos asiganos a su puesto</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">2 - Conocimientos de las Tareas:</label>
+		      <select class="form-control" name="item2" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4">1 - Excepcional dominio de todas las fases de su trabajo</option>
+			<option value="3">2 - Buen dominio de las fases de su trabajo y sólidos conocimientos de sus tareas</option>
+			<option value="2">3 - Interpreta sin dificultad las pautas de trabajo y responde adecuadamente</option>
+			<option value="1">4 - Posee sólo los conocimientos elementales relacionados con su tarea</option>
+			<option value="0">5 - Conocimientos insuficientes para el desempeño de las tareas a su cargo</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">3 - Criterio:</label>
+		      <select class="form-control" name="item3" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4">1 - Excepcional capacidad para comprender las pautas de trabajo y actuar en consecuencia</option>
+			<option value="3">2 - Muy buena capacidad de comprensión de las pautas de trabajo que le permite actuar minimizando los errores</option>
+			<option value="2">3 - Conoce adecuadamente su trabajoy las tareas relacionadas</option>
+			<option value="1">4 - Tiene dificulad para interpretar las pautas de trabajo</option>
+			<option value="0">5 - Le cuesta comprender las pautas de trabajo y requiere una permanente indicación y monitoreo de las tareas</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">4 - Colaboracion:</label>
+		      <select class="form-control" name="item4" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="4">1 - Excelente disposición a cooperar ante cada circunstacia o problema que se presente</option>
 			<option value="3">2 - Muy dispuesto/a  a cooperar. En general es requerido por su actitud que es reconocida y valorada</option>
@@ -2910,5 +3149,88 @@ function resultadoForm5($nombre_agente,$item1,$item2,$item31,$item32,$item33,$it
 </div>';
 
 }
+
+/*
+** Funcion que carga el formulario de resultados Formulario 6 Operativo sin personal a cargo
+*/
+function resultadoForm6($nombre_agente,$item11,$item12,$item13,$item2,$item3,$item4,$sum,$result,$f_desde,$f_hasta){
+
+
+   echo '<div class="container-fluid">    
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Resultado Evaluación Agente: '.$nombre_agente.'</div>
+        <div class="panel-body">
+                
+        <h2>Período Evaluado Desde: <strong>'.$f_desde.'</strong> Hasta: <strong>'.$f_hasta.'</strong></h2>
+        <p>Puntajes obtenidos en cada Item</p>            
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="text-nowrap text-center">Item</th>
+        <th class="text-nowrap text-center">Puntaje</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td align=left>1.1 Cantidad de Trabajo</td>
+        <td align=center>'.$item11.'</td>
+        </tr>
+      <tr>
+        <td align=left>1.2 Calidad de Trabajo</td>
+        <td align=center>'.$item12.'</td>
+        </tr>
+      <tr>
+        <td align=left>1.3 Manejo de Recursos</td>
+        <td align=center>'.$item13.'</td>
+        </tr>
+        <tr>
+        <td align=left>2. Conocimientos de las Tareas</td>
+        <td align=center>'.$item2.'</td>
+        </tr>
+        <tr>
+        <td align=left>3. Criterio</td>
+        <td align=center>'.$item3.'</td>
+        </tr>
+        <tr>
+        <td align=left>4. Colaboración</td>
+        <td align=center>'.$item4.'</td>
+        </tr>
+       </tbody>
+  </table><hr>
+              
+        <h3>Puntaje Total Obtenido: <strong>'.$sum.'</strong></h3><hr>
+        <h3>Calificación Final: <strong>'.$result.'<strong></h3><hr>';
+        
+        if($result == "Regular" || $result == "Deficiente"){
+        
+		echo '<div class="container">';
+		echo '<div class="alert alert-warning" role="alert">';
+		echo '<img src="../../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> Ante dicha Calificación deberá utilizar el Formulario B. Por favor completelo accediendo desde el botón aquí abajo';
+		echo '<hr><a href="../evaluaciones/formularioB.php" class="btn btn-primary btn-sm " ><span class="glyphicon glyphicon-list-alt"></span> Formulario B</a>';
+		echo "</div>";
+		echo "</div>";
+		
+	  
+        }
+        
+        echo '</div>
+        <div class="panel-footer">
+        <p style="text-align: center;""><strong>IMPORTANTE</strong></p><hr>
+        <p>1. En caso que el agente haya obtenido una calificación "Regular" o "Deficiente" se deberá adjuntar el Formulario B con el Programa de Recuperación</p>
+        <p>2. Los Agentes que hayan tenido sanciones disciplinarias en el período evaluado y/o en algunos de los factores evaluados haya obtenidos subtotal de "0" o "1", no pueden calificar con "Muy Bueno" o "Destacado"</p>
+        
+        </div>
+      </div>
+    </div>
+    
+   
+  </div>
+</div>';
+
+}
+
+
 
 ?>
