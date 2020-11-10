@@ -59,7 +59,7 @@
 	  	
 	     if (isset($_POST['A'])) {
 	     
-			    $nombre = mysqli_real_escape_string($conn,$_POST["nombre"]);
+                            $nombre = mysqli_real_escape_string($conn,$_POST["nombre"]);
                             $cuil = mysqli_real_escape_string($conn,$_POST["cuil"]);
                             $f_nac = mysqli_real_escape_string($conn,$_POST["f_nac"]);
                             $nivel_grado = mysqli_real_escape_string($conn,$_POST["nivel_grado"]);

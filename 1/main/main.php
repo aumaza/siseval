@@ -203,9 +203,56 @@ $(document).ready(function(){
       <form action="main.php" method="POST">
 	<?php
 	if($_SESSION['user'] == 'root'){
-	echo '<a href="#" data-toggle="tooltip" data-placement="right" title="Cargar Agente"><button type="submit" class="btn btn-default btn-sm" name="A"><img class="img-reponsive img-rounded" src="../../icons/actions/user-group-new.png" /> Agente</button></a><hr>
-	<a href="#" data-toggle="tooltip" data-placement="right" title="Listar Agentes"><button type="submit" class="btn btn-default btn-sm" name="B"><img class="img-reponsive img-rounded" src="../../icons/apps/preferences-contact-list.png" /> Agentes</button></a><hr>
-	<a href="#" data-toggle="tooltip" data-placement="right" title="Administración de Usuarios"><button type="submit" class="btn btn-default btn-sm" name="C"><img class="img-reponsive img-rounded" src="../../icons/actions/meeting-attending.png" /> Usuarios</button></a><hr>';
+	echo '
+	 <div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+        Administrar Agentes</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse">
+      <div class="panel-body">
+      <a href="#" data-toggle="tooltip" data-placement="right" title="Cargar Agente"><button type="submit" class="btn btn-default btn-sm" name="A"><img class="img-reponsive img-rounded" src="../../icons/actions/user-group-new.png" /> Agente</button></a><hr>
+	<a href="#" data-toggle="tooltip" data-placement="right" title="Listar Agentes"><button type="submit" class="btn btn-default btn-sm" name="B"><img class="img-reponsive img-rounded" src="../../icons/apps/preferences-contact-list.png" /> Agentes</button></a>
+      
+      </div>
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+        Administrar Usuarios</a>
+      </h4>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse">
+      <div class="panel-body">
+      
+      <a href="#" data-toggle="tooltip" data-placement="right" title="Administración de Usuarios"><button type="submit" class="btn btn-default btn-sm" name="C"><img class="img-reponsive img-rounded" src="../../icons/actions/meeting-attending.png" /> Usuarios</button></a>
+      
+      </div>
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+        Administrar Evaluaciones</a>
+      </h4>
+    </div>
+    <div id="collapse3" class="panel-collapse collapse">
+      <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.</div>
+    </div>
+  </div>
+</div>'; 
+	
 	}else{
 	
 	echo '<a href="#" data-toggle="tooltip" data-placement="right" title="Editar datos Personales"><button type="submit" class="btn btn-default btn-sm" name="D"><img class="img-reponsive img-rounded" src="../../icons/actions/user-group-properties.png" /> Mis Datos</button></a><hr>
@@ -213,7 +260,7 @@ $(document).ready(function(){
 	}
 	?>
 	</form>
-	<a href="../informes/informes.php" data-toggle="tooltip" data-placement="right" title="Informes Estadísticos"><button type="button" class="btn btn-default btn-sm"><img class="img-reponsive img-rounded" src="../../icons/actions/view-calendar-tasks.png" /> Informes</button></a>
+	
       </div>
     <div class="col-sm-10 text-left"> 
       <h1>Bienvenido/a <?php echo $nombre ?></h1>

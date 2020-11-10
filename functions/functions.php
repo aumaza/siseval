@@ -272,12 +272,12 @@ function newAgente(){
 	        
 	        <div class="form-group">
 		  <label for="nombre">Nombre y Apellido</label>
-		  <input type="text" class="form-control" id="nombre" name="nombre" onKeyDown="limitText(this,60);" required>
+		  <input type="text" class="form-control" id="nombre" name="nombre" onKeyDown="limitText(this,60);" placeholder="Ingrese Nombre y Apellido sin separar por comas" required>
 		</div>
 		
 		<div class="form-group">
 		  <label for="cuil">CUIL</label>
-		  <input type="text" class="form-control" id="cuil" name="cuil" onKeyDown="limitText(this,11);" required>
+		  <input type="text" class="form-control" id="cuil" name="cuil" onKeyDown="limitText(this,11);" placeholder="Ingrese CUIL sin separar por puntos ni guiones" required>
 		</div>
 		
 		<div class="form-group">
@@ -287,12 +287,12 @@ function newAgente(){
 		
 		<div class="form-group">
 		  <label for="nivel_grado">Nivel y Grado</label>
-		  <input type="text" class="form-control" id="nivel_grado" name="nivel_grado" onKeyDown="limitText(this,3);" required>
+		  <input type="text" class="form-control" id="nivel_grado" name="nivel_grado" onKeyDown="limitText(this,3);" placeholder="Ingrese Nivel y Grado ejemplo: A-10" required>
 		</div>
 		
 		<div class="form-group">
 		  <label for="sel1">Situación de Revista</label>
-		  <select class="form-control" name="revista">
+		  <select class="form-control" name="revista" required>
 		    <option value="" disabled selected>Seleccionar</option>
 		    <option value="Planta Permanente">Planta Permanente</option>
 		    <option value="Ley Marco">Ley Marco</option>
@@ -302,7 +302,7 @@ function newAgente(){
 		
 		<div class="form-group">
 		  <label for="sel1">Sexo:</label>
-		  <select class="form-control" name="sexo">
+		  <select class="form-control" name="sexo" required>
 		    <option value="" disabled selected>Seleccionar</option>
 		    <option value="Masculino">Masculino</option>
 		    <option value="Femenino">Femenino</option>
@@ -311,7 +311,7 @@ function newAgente(){
 		
 		<div class="form-group">
 		  <label for="sel1">Nivel:</label>
-		  <select class="form-control" name="nivel">
+		  <select class="form-control" name="nivel" required>
 		    <option value="" disabled selected>Seleccionar</option>
 		    <option value="1">1 - Gerencial</option>
 		    <option value="2">2 - Medio Profesional/Técnico con personal a cargo</option>
@@ -324,7 +324,7 @@ function newAgente(){
 		  
 		  <div class="form-group">
 		  <label for="sel1">Estudios:</label>
-		  <select class="form-control" name="estudios">
+		  <select class="form-control" name="estudios" required>
 		    <option value="" disabled selected>Seleccionar</option>
 		    <option value="Sin Estudios">Sin Estudios</option>
 		    <option value="Primario">Primario</option>
@@ -337,7 +337,7 @@ function newAgente(){
 		  
 		<div class="form-group">
 		  <label for="sel1">Funciones Ejecutivas:</label>
-		  <select class="form-control" name="func_ejec">
+		  <select class="form-control" name="func_ejec" required>
 		    <option value="" disabled selected>Seleccionar</option>
 		    <option value="Si">Si</option>
 		    <option value="No">No</option>
@@ -346,7 +346,7 @@ function newAgente(){
 		  
 		<div class="form-group">
 		  <label for="sel1">Nivel Función Ejecutiva:</label>
-		  <select class="form-control" name="niv_func_ejec">
+		  <select class="form-control" name="niv_func_ejec" required>
 		    <option value="" disabled selected>Seleccionar</option>
 		    <option value="0">0</option>
 		    <option value="1">1</option>
@@ -359,7 +359,7 @@ function newAgente(){
 		
 		<div class="form-group">
 		  <label for="sel1">Sanciones:</label>
-		  <select class="form-control" name="sanciones">
+		  <select class="form-control" name="sanciones" required>
 		    <option value="" disabled selected>Seleccionar</option>
 		    <option value="Si">Si</option>
 		    <option value="No">No</option>
