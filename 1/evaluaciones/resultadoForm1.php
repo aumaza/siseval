@@ -166,7 +166,7 @@ $(document).ready(function(){
   if($sum >= 37 && $sum <= 50){
       $result = "Muy Bueno";
   }
-  if($sum >= 51 && $sum <= 50){
+  if($sum >= 51 && $sum <= 56){
       $result = "Destacado";
   }
   

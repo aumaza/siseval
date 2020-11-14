@@ -248,6 +248,8 @@ $(document).ready(function(){
       <div class="panel-body">
       <a href="#" data-toggle="tooltip" data-placement="right" title="Evaluaciones Nivel Gerencial"><button type="submit" class="btn btn-default btn-sm" name="G"><img class="img-reponsive img-rounded" src="../../icons/actions/view-list-text.png" /> Evaluaciones Nivel 1</button></a><hr>
       
+      <a href="#" data-toggle="tooltip" data-placement="right" title="Evaluaciones Nivel Medio Profesional"><button type="submit" class="btn btn-default btn-sm" name="H"><img class="img-reponsive img-rounded" src="../../icons/actions/view-list-text.png" /> Evaluaciones Nivel 2</button></a><hr>
+      
       <a href="#" data-toggle="tooltip" data-placement="right" title="Operativo sin personal a cargo"><button type="submit" class="btn btn-default btn-sm" name="F"><img class="img-reponsive img-rounded" src="../../icons/actions/view-list-text.png" /> Evaluaciones Nivel 6</button></a>
       
       </div>
@@ -339,7 +341,10 @@ $(document).ready(function(){
 	      eval1($conn);
 	          
       }  
-   
+      if(isset($_POST['H'])){
+	      eval2($conn);
+	          
+      }
    ?>
       
     </div>
