@@ -31,7 +31,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Formulario de Evaluación</title>
+  <title>Evaluación Final</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="../../icons/actions/story-editor.png" />
@@ -110,68 +110,11 @@ $(document).ready(function(){
 
 <?php
   
-  $nivel = mysqli_real_escape_string($conn,$_POST["nivel"]);
-  $revista = mysqli_real_escape_string($conn,$_POST["revista"]);
-  
-  $jurisdiccion = mysqli_real_escape_string($conn,$_POST["juris"]);
-  $secretaria = mysqli_real_escape_string($conn,$_POST["secretaria"]);
-  $subsecretaria = mysqli_real_escape_string($conn,$_POST["subsecretaria"]);
-  $direccion = mysqli_real_escape_string($conn,$_POST["direccion"]);
-  $unidad = mysqli_real_escape_string($conn,$_POST["unidad"]);
-  $unidad2 = mysqli_real_escape_string($conn,$_POST["unidad2"]);
-  $cod_uni = mysqli_real_escape_string($conn,$_POST["cod_uni"]);
-  $nom_eval = mysqli_real_escape_string($conn,$_POST["nombre_evaluador"]);
-  $dni_eval = mysqli_real_escape_string($conn,$_POST["dni_evaluador"]);
-  $sit_esc_eval = mysqli_real_escape_string($conn,$_POST["sit_esc_eval"]);
-  $niv_gr_eval = mysqli_real_escape_string($conn,$_POST["nivel_grado_eval"]);
-  $agrup_eval = mysqli_real_escape_string($conn,$_POST["agrupamiento_eval"]);
-  $cargo_eval = mysqli_real_escape_string($conn,$_POST["cargo_eval"]);
-  $nombre_agente = mysqli_real_escape_string($conn,$_POST["nombre_agente"]);
-  $dni_agente = mysqli_real_escape_string($conn,$_POST["dni_agente"]);
-  $leg_agente = mysqli_real_escape_string($conn,$_POST["legajo_agente"]);
-  $ng_agente = mysqli_real_escape_string($conn,$_POST["ng_agente"]);
-  $agrupamiento2 = mysqli_real_escape_string($conn,$_POST["agrupamiento2"]);
-  $educacion = mysqli_real_escape_string($conn,$_POST["educacion"]);
-  $f_desde = mysqli_real_escape_string($conn,$_POST["f_desde"]);
-  $f_hasta = mysqli_real_escape_string($conn,$_POST["f_hasta"]);
-  
-  addEvalDatos($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad,$unidad2,$cod_uni,$nom_eval,$dni_eval,$sit_esc_eval,$niv_gr_eval,$agrup_eval,$cargo_eval,$nombre_agente,$dni_agente,$leg_agente,$ng_agente,$agrupamiento2,$educacion,$f_desde,$f_hasta,$conn);
-
-  $item11 = mysqli_real_escape_string($conn,$_POST["item11"]);
-  $item12 = mysqli_real_escape_string($conn,$_POST["item12"]);
-  $item13 = mysqli_real_escape_string($conn,$_POST["item13"]);
-  $item2 = mysqli_real_escape_string($conn,$_POST["item2"]);
-  $item3 = mysqli_real_escape_string($conn,$_POST["item3"]);
-  $item4 = mysqli_real_escape_string($conn,$_POST["item4"]);
-  
-  
-  
-  $sum = $item11+$item12+$item13+$item2+$item3+$item4;
-  
-  if($sum >= 0 && $sum <= 3){
-      $result = "Deficiente";
-  }
-  if($sum >= 4 && $sum <= 9){
-      $result = "Regular";
-  }
-  if($sum >= 10 && $sum <= 15){
-      $result = "Bueno";
-  }
-  if($sum >= 16 && $sum <= 21){
-      $result = "Muy Bueno";
-  }
-  if($sum >= 22 && $sum <= 24){
-      $result = "Destacado";
-  }
-  
-  $estado = "abierta";
-  addEvaluacion6($item11,$item12,$item13,$item2,$item3,$item4,$nombre_agente,$dni_agente,$ng_agente,$revista,$nivel,$sum,$result,$f_desde,$f_hasta,$estado,$conn);
-
+    
 if($conn){
 
-    if(isset($_POST['A'])){
-        resultadoForm6($nombre_agente,$item11,$item12,$item13,$item2,$item3,$item4,$sum,$result,$f_desde,$f_hasta);
-        }
+    $id = $_GET['id'];
+    verEval6($id,$conn);   
       
   }else{
   echo "Database Error Connection!!" .mysqli_error($conn);

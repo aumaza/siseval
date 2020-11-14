@@ -938,7 +938,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="nombre">Legajo</label>
-		      <input type="text" class="form-control" id="nombre" name="legajo_agente" onKeyDown="limitText(this,15);" required>
+		      <input type="text" class="form-control" id="nombre" name="legajo_agente" onKeyDown="limitText(this,15);" value="'.$cuil.'" required>
 		     </div><hr>
 		     
 		     <div class="form-group">
@@ -1161,6 +1161,7 @@ function formulario1($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 
 }
 
+/////////////////// SECCION FORMULARIO 2 ////////////////////
 
 /*
 ** Formulario Nivel 2 - Medio Profesional
@@ -1468,6 +1469,8 @@ function formulario2($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 
 }
 
+
+//////////////////// SECCION FORMULARIO 3 //////////////////////
 
 /*
 ** Formulario Nivel 3 - Medio con Personal a cargo
@@ -1778,6 +1781,8 @@ function formulario3($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 }
 
 
+//////////////////// SECCION FORMULARIO 4 //////////////////////
+
 /*
 ** Formulario Nivel 4 - Medio sin Personal a cargo
 */
@@ -2064,6 +2069,7 @@ function formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 
 }
 
+/////////////////////// SECCION FORMULARIO 5 ///////////////////
 
 /*
 ** Formulario Nivel 5 - Operativo con Personal a cargo
@@ -2327,6 +2333,8 @@ function formulario5($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 }
 
 
+/////////////////// SECCION FORMULARIO 6 ///////////////////
+
 /*
 ** Formulario Nivel 6 - Operativo sin Personal a cargo
 */
@@ -2434,7 +2442,7 @@ function formulario6($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 		    
 		    <div class="form-group">
 		      <label for="nombre">Legajo</label>
-		      <input type="text" class="form-control" id="nombre" name="legajo_agente" onKeyDown="limitText(this,15);" required>
+		      <input type="text" class="form-control" id="nombre" name="legajo_agente" onKeyDown="limitText(this,15);" value="'.$cuil.'" required readonly>
 		     </div><hr>
 		     
 		     <div class="form-group">
@@ -2567,18 +2575,631 @@ function formulario6($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista){
 
 
 
+///////////////////// SECCION EDITAR EVALUACIONES //////////////////////
+
 /*
-** Funcion de carga a base de datos tabla nivel_1
+** Formulario Nivel 1 - Gerencial
+*/
+function editForm1($id,$nombre,$f_desde,$f_hasta,$conn){
+        
+        $sql = "select * from evaluaciones1 where id = '$id'";
+        mysqli_select_db('siseval');
+        $res = mysqli_query($conn,$sql);
+        $fila = mysqli_fetch_assoc($res);
+        
+        $query = "select * from eval_datos where nombre_agente = '$nombre' and f_desde = '$f_desde' and f_hasta = '$f_hasta'";
+        mysqli_select_db('siseval');
+        $resp = mysqli_query($conn,$query);
+        $row = mysqli_fetch_assoc($resp);
+
+        echo '<div class="container-fluid"
+		<div class="row">
+		  <div class="col-sm-6">
+		    <div class="panel panel-primary">
+		    <div class="panel-heading">Formulario Nivel 1 Gerencial - Datos del Agente:  '.$fila['agente'].'</div>
+		    <div class="panel-body">
+		    <p>Serán evaluados en este nivel los agentes que cumplan con funciones de Director Nacional, General, Subdirector 
+			o equivalentes y personal con funciones ejecutivas hasta nivel IV</p><hr>
+			<h3><strong>Identificación del Organismo en el que revista según estructura</strong></h3><hr>
+		    
+		    <form action="../evaluaciones/editResultadoForm1.php" method="POST">
+		    <input type="hidden" id="id" name="id" value="'.$id.'" />
+		        
+		   <div class="form-group">
+		      <label for="nombre">Juriscidicción/Org. Descentralizado</label>
+		      <input type="text" class="form-control" id="nombre" name="juris" onKeyDown="limitText(this,60);" value="'.$row['jurisdiccion'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Secretaría / Gerencia</label>
+		      <input type="text" class="form-control" id="nombre" name="secretaria" onKeyDown="limitText(this,60);" value="'.$row['secretaria'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Subsecretaría</label>
+		      <input type="text" class="form-control" id="nombre" name="subsecretaria" onKeyDown="limitText(this,60);" value="'.$row['subsecretaria'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Dirección Nacional / General</label>
+		      <input type="text" class="form-control" id="nombre" name="direccion" onKeyDown="limitText(this,60);" value="'.$row['direccion'].'" required>
+		    </div><hr>
+			
+		    <div class="form-group">
+		      <label for="nombre">Unidad</label>
+		      <input type="text" class="form-control" id="nombre" name="unidad" onKeyDown="limitText(this,60);" value="'.$row['unidad'].'" required>
+		    </div><hr>
+		    
+		    <h3><strong>Para casos en que el Agente preste servicios en otra Unidad de Evaluación diferente a la de revista</strong></h3><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Unidad de Evaluación</label>
+		      <input type="text" class="form-control" id="nombre" name="unidad2" onKeyDown="limitText(this,60);" value="'.$row['unidad2'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Código Unidad de Evaluación</label>
+		      <input type="text" class="form-control" id="nombre" name="cod_uni" onKeyDown="limitText(this,6);" value="'.$row['cod_uni'].'" required>
+		    </div><hr>
+		    
+		    <h3><strong>Identificación del Evaluador</strong></h3><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Apellido y Nombre</label>
+		      <input type="text" class="form-control" id="nombre" name="nombre_evaluador" onKeyDown="limitText(this,60);" value="'.$row['evaluador'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">DNI</label>
+		      <input type="text" class="form-control" id="nombre" name="dni_evaluador" onKeyDown="limitText(this,8);" value="'.$row['dni_evaluador'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">Situacion Escalafonaria:</label>
+		      <select class="form-control" name="sit_esc_eval">
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="Otra" '.($row['sit_esc_eval'] == "Otra" ? "selected" : ""). '>Otra</option>
+			<option value="SINEP" '.($row['sit_esc_eval'] == "SINEP" ? "selected" : ""). '>SINAPA/SINEP</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Nivel y Grado</label>
+		      <input type="text" class="form-control" id="nombre" name="nivel_grado_eval" onKeyDown="limitText(this,3);" value="'.$row['niv_gr_eval'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Agrupamiento</label>
+		      <input type="text" class="form-control" id="nombre" name="agrupamiento_eval" onKeyDown="limitText(this,25);" value="'.$row['agrup_eval'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Cargo que Ocupa</label>
+		      <input type="text" class="form-control" id="nombre" name="cargo_eval" onKeyDown="limitText(this,60);" value="'.$row['cargo_eval'].'" required>
+		    </div><hr>
+		    
+		    <h3><strong>Identificación del Agente</strong></h3><hr>
+		    
+		     <div class="form-group">
+		      <label for="nombre">Apellido y Nombre</label>
+		      <input type="text" class="form-control" id="nombre" name="nombre_agente" onKeyDown="limitText(this,60);" value="'.$row['nombre_agente'].'" required readonly>
+		     </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">DNI / CUIL</label>
+		      <input type="text" class="form-control" id="nombre" name="dni_agente" onKeyDown="limitText(this,11);" value="'.$row['dni_agente'].'" required readonly>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Legajo</label>
+		      <input type="text" class="form-control" id="nombre" name="legajo_agente" onKeyDown="limitText(this,15);" value="'.$row['legajo_agente'].'" required>
+		     </div><hr>
+		     
+		     <div class="form-group">
+		      <label for="nombre">Nivel y Grado</label>
+		      <input type="text" class="form-control" id="nombre" name="ng_agente" onKeyDown="limitText(this,3);" value="'.$row['niv_gr_agente'].'" required readonly>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Agrupamiento</label>
+		      <input type="text" class="form-control" id="nombre" name="agrupamiento2" onKeyDown="limitText(this,25);" value="'.$row['agrup_agente'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Nivel Educativo</label>
+		      <input type="text" class="form-control" id="nombre" name="educacion" onKeyDown="limitText(this,13);" value="'.$row['educacion'].'" required readonly>
+		    </div><hr>
+		    
+		    <h3><strong>Período Evaluado</strong></h3><hr>
+		    
+		    <div class="form-group">
+		      <label for="f_nac">Fecha Desde</label>
+		      <input type="date" class="form-control" id="f_desde" name="f_desde" value="'.$fila['f_desde'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="f_nac">Fecha Hasta</label>
+		      <input type="date" class="form-control" id="f_hasta" name="f_hasta" value="'.$fila['f_hasta'].'" required>
+		    </div><hr>
+		    
+		    </div>
+		    <div class="panel-footer"><p><strong>Importante: No olvide completar ninguno de los datos anteriores</strong></p></div>
+		  </div>
+		</div>
+	      
+		  <div class="col-sm-6">
+		    <div class="panel panel-primary">
+		    <div class="panel-heading">Formulario Nivel 1 - Fomulario de Evaluación</div>
+		    <div class="panel-body">
+		    
+		    <p>Cada uno de los Items a evaluar cuenta con 5 factores, cada factor tiene un valor asociado. El valor más alto está representado
+			por el primero de los factores y el más bajo por el quinto, dichos valores van del 4 al 0.
+			La sumatoria de los valores obtenidos en cada item darán un total el cuál será asociado a una Calificación final.</p><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">1 - Planificación:</label>
+		      <select class="form-control" name="item1" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item1'] == "4" ? "selected" : ""). '>1 - Planificación Altamente Eficiente</option>
+			<option value="3" '.($fila['item1'] == "3" ? "selected" : ""). '>2 - Muy Buenos Programas y cursos de Acción</option>
+			<option value="2" '.($fila['item1'] == "2" ? "selected" : ""). '>3 - Planifica adecuadamente y Establece metas razonables</option>
+			<option value="1" '.($fila['item1'] == "1" ? "selected" : ""). '>4 - Presenta dificultades a la hora de establecer planes</option>
+			<option value="0" '.($fila['item1'] == "0" ? "selected" : ""). '>5 - Planifica poco o establece planes poco eficientes</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">2 - Gestión de Planes y Programas:</label>
+		      <select class="form-control" name="item2" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item2'] == "4" ? "selected" : ""). '>1 - Logra el total cumplimiento eficaz de los objetivos</option>
+			<option value="3" '.($fila['item2'] == "3" ? "selected" : ""). '>2 - Logra buen cumplimiento de los objetivos y metas propuestos</option>
+			<option value="2" '.($fila['item2'] == "2" ? "selected" : ""). '>3 - Logra que las metas propuestas dentro de su área se alcancen en los plazos previstos</option>
+			<option value="1" '.($fila['item2'] == "1" ? "selected" : ""). '>4 - Tiene Dificultades para lograr que se cumplan las metas</option>
+			<option value="0" '.($fila['item2'] == "0" ? "selected" : ""). '>5 - Difícilmente logra concretar las metas previstas</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">3 - Control de Resultados:</label>
+		      <select class="form-control" name="item3" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item3'] == "4" ? "selected" : ""). '>1 - Controla de manera excelente la gestión de su área</option>
+			<option value="3" '.($fila['item3'] == "3" ? "selected" : ""). '>2 - Controla la gestión de su área de manera muy eficiente</option>
+			<option value="2" '.($fila['item3'] == "2" ? "selected" : ""). '>3 - Realiza controles adecuados</option>
+			<option value="1" '.($fila['item3'] == "1" ? "selected" : ""). '>4 - Sus controles son puntuales o excesivos</option>
+			<option value="0" '.($fila['item3'] == "0" ? "selected" : ""). '>5 - Rara vez evalúa y/o controla las tareas durante su ejecución</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">4.1 - Organización del Trabajo:</label>
+		      <select class="form-control" name="item41" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item41'] == "4" ? "selected" : ""). '>1 - Excelente capacidad organizativa</option>
+			<option value="3" '.($fila['item41'] == "3" ? "selected" : ""). '>2 - Muy buena capacidad organizativa y de asignación de recursos</option>
+			<option value="2" '.($fila['item41'] == "2" ? "selected" : ""). '>3 - Organiza adecuadamente los procesos de trabajo</option>
+			<option value="1" '.($fila['item41'] == "1" ? "selected" : ""). '>4 - Escasa capacidad organizativa</option>
+			<option value="0" '.($fila['item41'] == "0" ? "selected" : ""). '>5 - Tiene problemas para integrar los factores de la producción</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">4.2 - Resolver Problemas:</label>
+		      <select class="form-control" name="item42" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item42'] == "4" ? "selected" : ""). '>1 - Excelente habilidad para descomponer y analizar situaciones problemáticas</option>
+			<option value="3" '.($fila['item42'] == "3" ? "selected" : ""). '>2 - Muy buena capacidad para analizar y resolver problemas</option>
+			<option value="2" '.($fila['item42'] == "2" ? "selected" : ""). '>3 - Analiza y resuelve los problemas de rutina y evita complicaciones innecesarias</option>
+			<option value="1" '.($fila['item42'] == "1" ? "selected" : ""). '>4 - En ocasiones manifiesta dificultades para analizar los problemas</option>
+			<option value="0" '.($fila['item42'] == "0" ? "selected" : ""). '>5 - Generalmente tiene dificultades para percibir los problemas</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">5 - Conducción:</label>
+		      <select class="form-control" name="item5" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item5'] == "4" ? "selected" : ""). '>1 - Excelente habilidad para dirigir y coordinar grupos de trabajo</option>
+			<option value="3" '.($fila['item5'] == "3" ? "selected" : ""). '>2 - Muy buen criterio para dirigir</option>
+			<option value="2" '.($fila['item5'] == "2" ? "selected" : ""). '>3 - Es efectivo en la dirección y coordinación del personal</option>
+			<option value="1" '.($fila['item5'] == "1" ? "selected" : ""). '>4 - Suele tener dificultades para dirigir a su personal</option>
+			<option value="0" '.($fila['item5'] == "0" ? "selected" : ""). '>5 - Contínuamente presenta problemas para dirigir la acción del personal</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">6.1 - Asumir representación interna y externa:</label>
+		      <select class="form-control" name="item61" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item61'] == "4" ? "selected" : ""). '>1 - Gran capacidad para relacionarse con el contexto y representar a su área</option>
+			<option value="3" '.($fila['item61'] == "3" ? "selected" : ""). '>2 - Muy buena capacidad para representar a su área</option>
+			<option value="2" '.($fila['item61'] == "2" ? "selected" : ""). '>3 - Establece y mantiene relaciones convenientes para el accionar laboral de su área</option>
+			<option value="1" '.($fila['item61'] == "1" ? "selected" : ""). '>4 - A veces no asume convenientemente la representación de su área</option>
+			<option value="0" '.($fila['item61'] == "0" ? "selected" : ""). '>5 - Tiene dificultades para establecer relaciones cuando asume la representación de su área</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">6.2 - Cerrar Transacciones:</label>
+		      <select class="form-control" name="item62" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item62'] == "4" ? "selected" : ""). '>1 - Notable facilidad para conducir negociaciones</option>
+			<option value="3" '.($fila['item62'] == "3" ? "selected" : ""). '>2 - Conduce habilidosamente y concreta los procesos de negociación con muy buenos resultados</option>
+			<option value="2" '.($fila['item62'] == "2" ? "selected" : ""). '>3 - Conduce y cierra satisfactoriamente procesos de negociación habituales</option>
+			<option value="1" '.($fila['item62'] == "1" ? "selected" : ""). '>4 - Puede iniciar y conducir transacciones pero tiene dificultad para cerrarlas</option>
+			<option value="0" '.($fila['item62'] == "0" ? "selected" : ""). '>5 - Su actuación normalmente lleva a cierres confusos e inconvenientes que deben ser rectificados</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">7.1 - Interpretación y predicción del contexto:</label>
+		      <select class="form-control" name="item71" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item71'] == "4" ? "selected" : ""). '>1 - Optima lectura de la realidad</option>
+			<option value="3" '.($fila['item71'] == "3" ? "selected" : ""). '>2 - Realiza lecturas muy acertadas de la realidad en términos de ventajas y desventajas</option>
+			<option value="2" '.($fila['item71'] == "2" ? "selected" : ""). '>3 - Sus lecturas de la realidad son razonablemente correctas</option>
+			<option value="1" '.($fila['item71'] == "1" ? "selected" : ""). '>4 - A menudo tiene dificultades para leer correctamente la realidad</option>
+			<option value="0" '.($fila['item71'] == "0" ? "selected" : ""). '>5 - Lectura habitualemnte incorrecta de la realidad</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">7.2 - Maximizar Oportunidades:</label>
+		      <select class="form-control" name="item72" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item72'] == "4" ? "selected" : ""). '>1 - Excelente habilidad para aprovechar oportunidades en la programacón de su área</option>
+			<option value="3" '.($fila['item72'] == "3" ? "selected" : ""). '>2 - Aprovecha muy bien las oportunidades del contexto</option>
+			<option value="2" '.($fila['item72'] == "2" ? "selected" : ""). '>3 - Normalmente aprovecha oportunidades en la formulación de los planes y programas de su área</option>
+			<option value="1" '.($fila['item72'] == "1" ? "selected" : ""). '>4 - Escasamente aprovecha las oportunidades, se mantiene en la rutina</option>
+			<option value="0" '.($fila['item72'] == "0" ? "selected" : ""). '>5 - Muy poco capaz de aprovechar oportunidades que resultarían claramente favorables para su área</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">8 - Iniciativa:</label>
+		      <select class="form-control" name="item8" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item8'] == "4" ? "selected" : ""). '>1 - Notablemente capaz para generar acciones oportunas</option>
+			<option value="3" '.($fila['item8'] == "3" ? "selected" : ""). '>2 - Muy buena capacidad para actuar oportunamente</option>
+			<option value="2" '.($fila['item8'] == "2" ? "selected" : ""). '>3 - Actúa oportunamente asumiento los riesgos necesarios</option>
+			<option value="1" '.($fila['item8'] == "1" ? "selected" : ""). '>4 - Ocasionalmente tiene problemas para actuar y asumir riesgos</option>
+			<option value="0" '.($fila['item8'] == "0" ? "selected" : ""). '>5 - Tiene dificultades para pasar a la acción y asumir los riesgos que ello implica</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">9 - Adaptabilidad:</label>
+		      <select class="form-control" name="item9" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item9'] == "4" ? "selected" : ""). '>1 - Demuestra absoluta apertura para asimilar los cambios y para generar rápidamente cursos de acción</option>
+			<option value="3" '.($fila['item9'] == "3" ? "selected" : ""). '>2 - Comprende los cambios rápidamente y sin dificultades</option>
+			<option value="2" '.($fila['item9'] == "2" ? "selected" : ""). '>3 - Es permeable a los cambios y reacciona razonablemente bien en la generación de cursos de acción adecuados</option>
+			<option value="1" '.($fila['item9'] == "1" ? "selected" : ""). '>4 - Le cuesta aceptar los cambios. Tiene dificultades para generar cursos de acción adecuados</option>
+			<option value="0" '.($fila['item9'] == "0" ? "selected" : ""). '>5 - Es muy poco permeable a los nuevas situaciones de trabajo.</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">10 - Autonomía:</label>
+		      <select class="form-control" name="item10" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item10'] == "4" ? "selected" : ""). '>1 - Casi siempre se maneja con gran independencia, tomando las decisiones con total responsabilidad</option>
+			<option value="3" '.($fila['item10'] == "3" ? "selected" : ""). '>2 - Generalmente muestra independencia, tomando decisiones bajo su propia responsabilidad</option>
+			<option value="2" '.($fila['item10'] == "2" ? "selected" : ""). '>3 - Toma decisiones adecuadas a su función en situaciones usuales</option>
+			<option value="1" '.($fila['item10'] == "1" ? "selected" : ""). '>4 - Pocas veces exhibe una conducta autónoma, con frecuencia solicita apoyo</option>
+			<option value="0" '.($fila['item10'] == "0" ? "selected" : ""). '>5 - Muy frecuentemente necesita consultar a sus superiores o a pares para tomar decisiones</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">11 - Identificación con la Organización:</label>
+		      <select class="form-control" name="item11" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item11'] == "4" ? "selected" : ""). '>1 - Su desempeño está permanentemente comprometido con los fines de la organización</option>
+			<option value="3" '.($fila['item11'] == "3" ? "selected" : ""). '>2 - Muy buen nivel de compromiso con los fines de la organización</option>
+			<option value="2" '.($fila['item11'] == "2" ? "selected" : ""). '>3 - Adecuado compromiso con los fines y metas de la organización</option>
+			<option value="1" '.($fila['item11'] == "1" ? "selected" : ""). '>4 - Bajo compromiso con los fines y metas de la organización</option>
+			<option value="0" '.($fila['item11'] == "0" ? "selected" : ""). '>5 - Se compromete muy poco con los objetivos organizacionales y parece que siempre prevalecen sus interese personales</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">Estado:</label>
+		      <select class="form-control" name="estado" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="abierta" '.($fila['estado'] == "abierta" ? "selected" : ""). '>Abierta</option>
+			<option value="cerrada" '.($fila['estado'] == "cerrada" ? "selected" : ""). '>Cerrada</option>
+			</select>
+		    </div><hr>
+		    
+		    </div>
+		    <div class="panel-footer"><button type="submit" class="btn btn-success btn-block" name="A"><img src="../../icons/actions/go-next.png"  class="img-reponsive img-rounded"> Continuar</button>
+		      </form> <br></div>
+		  </div>
+		</div>
+	     
+	     
+	      </div>';
+
+}
+
+
+
+/*
+** Formulario Nivel 6 - Operativo sin Personal a cargo
+*/
+function editForm6($id,$nombre,$f_desde,$f_hasta,$conn){
+        
+        $sql = "select * from evaluaciones6 where id = '$id'";
+        mysqli_select_db('siseval');
+        $res = mysqli_query($conn,$sql);
+        $fila = mysqli_fetch_assoc($res);
+        
+        $query = "select * from eval_datos where nombre_agente = '$nombre' and f_desde = '$f_desde' and f_hasta = '$f_hasta'";
+        mysqli_select_db('siseval');
+        $resp = mysqli_query($conn,$query);
+        $row = mysqli_fetch_assoc($resp);
+        
+        
+        echo '<div class="container-fluid"
+		<div class="row">
+		  <div class="col-sm-6">
+		    <div class="panel panel-primary">
+		    <div class="panel-heading">Editar - Formulario Nivel 6 Operativo sin Personal a Cargo - Datos del Agente:  '.$fila['agente'].'</div>
+		    <div class="panel-body">
+		    <p>Serán evaluados en este nivel los agentes no incluídos en los niveles anteriores
+			El personal con atención al público será evaluado teniendo en cuenta esta circunstancia.</p><hr>
+			
+			<h3><strong>Identificación del Organismo en el que revista según estructura</strong></h3><hr>
+		    
+		    <form action="../evaluaciones/editResultadoForm6.php" method="POST">
+		    <input type="hidden" id="id" name="id" value="'.$id.'" />
+		        
+		   <div class="form-group">
+		      <label for="nombre">Juriscidicción/Org. Descentralizado</label>
+		      <input type="text" class="form-control" id="nombre" name="juris" onKeyDown="limitText(this,60);" value="'.$row['jurisdiccion'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Secretaría / Gerencia</label>
+		      <input type="text" class="form-control" id="nombre" name="secretaria" onKeyDown="limitText(this,60);" value="'.$row['secretaria'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Subsecretaría</label>
+		      <input type="text" class="form-control" id="nombre" name="subsecretaria" onKeyDown="limitText(this,60);" 
+		      value="'.$row['subsecretaria'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Dirección Nacional / General</label>
+		      <input type="text" class="form-control" id="nombre" name="direccion" onKeyDown="limitText(this,60);" value="'.$row['direccion'].'" required>
+		    </div><hr>
+			
+		    <div class="form-group">
+		      <label for="nombre">Unidad</label>
+		      <input type="text" class="form-control" id="nombre" name="unidad" onKeyDown="limitText(this,60);" value="'.$row['unidad'].'" required>
+		    </div><hr>
+		    
+		    <h3><strong>Para casos en que el Agente preste servicios en otra Unidad de Evaluación diferente a la de revista</strong></h3><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Unidad de Evaluación</label>
+		      <input type="text" class="form-control" id="nombre" name="unidad2" onKeyDown="limitText(this,60);" value="'.$row['unidad2'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Código Unidad de Evaluación</label>
+		      <input type="text" class="form-control" id="nombre" name="cod_uni" onKeyDown="limitText(this,6);" value="'.$row['cod_uni'].'" required>
+		    </div><hr>
+		    
+		    <h3><strong>Identificación del Evaluador</strong></h3><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Apellido y Nombre</label>
+		      <input type="text" class="form-control" id="nombre" name="nombre_evaluador" onKeyDown="limitText(this,60);" value="'.$row['evaluador'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">DNI</label>
+		      <input type="text" class="form-control" id="nombre" name="dni_evaluador" onKeyDown="limitText(this,8);" value="'.$row['dni_evaluador'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">Situacion Escalafonaria:</label>
+		      <select class="form-control" name="sit_esc_eval">
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="Otra" '.($row['sit_esc_eval'] == "Otra" ? "selected" : ""). '>Otra</option>
+			<option value="SINEP" '.($row['sit_esc_eval'] == "SINEP" ? "selected" : ""). '>SINAPA/SINEP</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Nivel y Grado</label>
+		      <input type="text" class="form-control" id="nombre" name="nivel_grado_eval" onKeyDown="limitText(this,3);" value="'.$row['niv_gr_eval'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Agrupamiento</label>
+		      <input type="text" class="form-control" id="nombre" name="agrupamiento_eval" onKeyDown="limitText(this,25);" value="'.$row['agrup_eval'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Cargo que Ocupa</label>
+		      <input type="text" class="form-control" id="nombre" name="cargo_eval" onKeyDown="limitText(this,60);" value="'.$row['cargo_eval'].'" required>
+		    </div><hr>
+		    
+		    <h3><strong>Identificación del Agente</strong></h3><hr>
+		    
+		     <div class="form-group">
+		      <label for="nombre">Apellido y Nombre</label>
+		      <input type="text" class="form-control" id="nombre" name="nombre_agente" onKeyDown="limitText(this,60);" value="'.$row['nombre_agente'].'" required readonly>
+		     </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">DNI / CUIL</label>
+		      <input type="text" class="form-control" id="nombre" name="dni_agente" onKeyDown="limitText(this,11);" value="'.$row['dni_agente'].'" required readonly>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Legajo</label>
+		      <input type="text" class="form-control" id="nombre" name="legajo_agente" onKeyDown="limitText(this,15);" value="'.$row['legajo_agente'].'" required readonly>
+		     </div><hr>
+		     
+		     <div class="form-group">
+		      <label for="nombre">Nivel y Grado</label>
+		      <input type="text" class="form-control" id="nombre" name="ng_agente" onKeyDown="limitText(this,3);" value="'.$row['niv_gr_agente'].'" required readonly>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Agrupamiento</label>
+		      <input type="text" class="form-control" id="nombre" name="agrupamiento2" onKeyDown="limitText(this,25);" value="'.$row['agrup_agente'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Nivel Educativo</label>
+		      <input type="text" class="form-control" id="nombre" name="educacion" onKeyDown="limitText(this,13);" value="'.$row['educacion'].'" required>
+		    </div><hr>
+		    
+		    <h3><strong>Período Evaluado</strong></h3><hr>
+		    
+		    <div class="form-group">
+		      <label for="f_nac">Fecha Desde</label>
+		      <input type="date" class="form-control" id="f_desde" name="f_desde" value="'.$fila['f_desde'].'" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="f_nac">Fecha Hasta</label>
+		      <input type="date" class="form-control" id="f_hasta" name="f_hasta" value="'.$fila['f_hasta'].'" required>
+		    </div><hr>
+		    
+		    </div>
+		    <div class="panel-footer"><p><strong>Importante: No olvide completar ninguno de los datos anteriores y verificar que son los correctos.-</strong></p></div>
+		  </div>
+		</div>
+	      
+		  <div class="col-sm-6">
+		    <div class="panel panel-primary">
+		    <div class="panel-heading">Formulario Nivel 6 - Fomulario de Evaluación</div>
+		    <div class="panel-body">
+		    
+		    <p>Cada uno de los Items a evaluar cuenta con 5 factores, cada factor tiene un valor asociado. El valor más alto está representado
+			por el primero de los factores y el más bajo por el quinto, dichos valores van del 4 al 0.
+			La sumatoria de los valores obtenidos en cada item darán un total el cuál será asociado a una Calificación final.</p><hr>
+		    
+		    
+		     <div class="form-group">
+		      <label for="sel1">1.1 - Cantidad de Trabajo:</label>
+		      <select class="form-control" name="item11" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item11'] == "4" ? "selected" : ""). '>1 - Rendimiento excepcionalmente alto. Sobrepasa los márgenes requeridos normalmente en su puesto</option>
+			<option value="3" '.($fila['item11'] == "3" ? "selected" : ""). '>2 - Siempre alcanza y frecuentemente supera el rendimiento requerido en los plazos previstos</option>
+			<option value="2" '.($fila['item11'] == "2" ? "selected" : ""). '>3 - Alcanza los niveles normales de trabajo a un ritmo aceptable y en los plazos establecidos</option>
+			<option value="1" '.($fila['item11'] == "1" ? "selected" : ""). '>4 - Su rendieminto está por debajo de los niveles requeridos</option>
+			<option value="0" '.($fila['item11'] == "0" ? "selected" : ""). '>5 - Su rendimiento está muy por debajo de los requerimientos.</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">1.2 - Calidad de Trabajo:</label>
+		      <select class="form-control" name="item12" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item12'] == "4" ? "selected" : ""). '>1 - Excepcional nivel de calidad de trabajo</option>
+			<option value="3" '.($fila['item12'] == "3" ? "selected" : ""). '>2 - Muy buen nivel de calidad de trabajo</option>
+			<option value="2" '.($fila['item12'] == "2" ? "selected" : ""). '>3 - Adecuado nivel de calidad de trabajo</option>
+			<option value="1" '.($fila['item12'] == "1" ? "selected" : ""). '>4 - Tiene dificultades para realizar su trabajo con la calidad requerida</option>
+			<option value="0" '.($fila['item12'] == "0" ? "selected" : ""). '>5 - Falta de calidad en la realización de su trabajo. Necesita constante monitoreo</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">1.3 - Manejo de Recursos:</label>
+		      <select class="form-control" name="item13" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item13'] == "4" ? "selected" : ""). '>1 - Excelete manejo de los recursos asignados a su puesto</option>
+			<option value="3" '.($fila['item13'] == "3" ? "selected" : ""). '>2 - Muy efectivo para administrar recursos y reducir costos, mejorar métodos, procedimientos y técnicas</option>
+			<option value="2" '.($fila['item13'] == "2" ? "selected" : ""). '>3 - Buen sentido de la admnistración de los recursos</option>
+			<option value="1" '.($fila['item13'] == "1" ? "selected" : ""). '>4 - Tiene dificultades para administrar apropiadamente los recursos asignados a su puesto</option>
+			<option value="0" '.($fila['item13'] == "0" ? "selected" : ""). '>5 - No aprovecha los recursos asiganos a su puesto</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">2 - Conocimientos de las Tareas:</label>
+		      <select class="form-control" name="item2" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item2'] == "4" ? "selected" : ""). '>1 - Excepcional dominio de todas las fases de su trabajo</option>
+			<option value="3" '.($fila['item2'] == "3" ? "selected" : ""). '>2 - Buen dominio de las fases de su trabajo y sólidos conocimientos de sus tareas</option>
+			<option value="2" '.($fila['item2'] == "2" ? "selected" : ""). '>3 - Interpreta sin dificultad las pautas de trabajo y responde adecuadamente</option>
+			<option value="1" '.($fila['item2'] == "1" ? "selected" : ""). '>4 - Posee sólo los conocimientos elementales relacionados con su tarea</option>
+			<option value="0" '.($fila['item2'] == "0" ? "selected" : ""). '>5 - Conocimientos insuficientes para el desempeño de las tareas a su cargo</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">3 - Criterio:</label>
+		      <select class="form-control" name="item3" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item3'] == "4" ? "selected" : ""). '>1 - Excepcional capacidad para comprender las pautas de trabajo y actuar en consecuencia</option>
+			<option value="3" '.($fila['item3'] == "3" ? "selected" : ""). '>2 - Muy buena capacidad de comprensión de las pautas de trabajo que le permite actuar minimizando los errores</option>
+			<option value="2" '.($fila['item3'] == "2" ? "selected" : ""). '>3 - Conoce adecuadamente su trabajoy las tareas relacionadas</option>
+			<option value="1" '.($fila['item3'] == "1" ? "selected" : ""). '>4 - Tiene dificulad para interpretar las pautas de trabajo</option>
+			<option value="0" '.($fila['item3'] == "0" ? "selected" : ""). '>5 - Le cuesta comprender las pautas de trabajo y requiere una permanente indicación y monitoreo de las tareas</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">4 - Colaboracion:</label>
+		      <select class="form-control" name="item4" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="4" '.($fila['item4'] == "4" ? "selected" : ""). '>1 - Excelente disposición a cooperar ante cada circunstacia o problema que se presente</option>
+			<option value="3" '.($fila['item4'] == "3" ? "selected" : ""). '>2 - Muy dispuesto/a  a cooperar. En general es requerido por su actitud que es reconocida y valorada</option>
+			<option value="2" '.($fila['item4'] == "2" ? "selected" : ""). '>3 - Coopera con sus jefes y compañeros</option>
+			<option value="1" '.($fila['item4'] == "1" ? "selected" : ""). '>4 - Dispuesto a prestar ayuda sólo en algunos casos. Prefiere no trabajar en equipo</option>
+			<option value="0" '.($fila['item4'] == "0" ? "selected" : ""). '>5 - Siempre tiene dificultades para cooperar con sus pares y superiores</option>
+		      </select>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="sel1">Estado:</label>
+		      <select class="form-control" name="estado" required>
+			<option value="" disabled selected>Seleccionar</option>
+			<option value="abierta" '.($fila['estado'] == "abierta" ? "selected" : ""). '>Abierta</option>
+			<option value="cerrada" '.($fila['estado'] == "cerrada" ? "selected" : ""). '>Cerrada</option>
+			</select>
+		    </div><hr>
+		     
+		    
+		    </div>
+		    <div class="panel-footer">
+		    <p><strong>Importante:</strong> Antes de presionar "Continuar" verifíque que cada uno de los items que han sido seleccionados sean los correctos.-</p>
+		    <p><strong>Si no presenta modificación en los Items solo cambie el estado de la Evaluación a Cerrada. Recuerde que una vez cerrada la evaluación no podrá ser modficada.</strong></p><hr>
+		    <button type="submit" class="btn btn-success btn-block" name="A"><img src="../../icons/actions/go-next.png"  class="img-reponsive img-rounded"> Continuar</button>
+		      </form> <br></div>
+		  </div>
+		</div>
+	     
+	     
+	      </div>';
+
+}
+
+
+/////////////////////// SECCION GUARDAR EN BASE DE DATOS /////////////////////////////
+
+/*
+** Funcion de carga a base de datos eval_datos
 */
 
-function addEvalNiv1($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad,$unidad2,$cod_uni,$nom_eval,$dni_eval,$sit_esc_eval,$niv_gr_eval,$agrup_eval,$cargo_eval,$nombre_agente,$dni_agente,$leg_agente,$ng_agente,$agrupamiento2,$educacion,$f_desde,$f_hasta,$conn){
+function addEvalDatos($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad,$unidad2,$cod_uni,$nom_eval,$dni_eval,$sit_esc_eval,$niv_gr_eval,$agrup_eval,$cargo_eval,$nombre_agente,$dni_agente,$leg_agente,$ng_agente,$agrupamiento2,$educacion,$f_desde,$f_hasta,$conn){
 
 		
 	mysqli_select_db('siseval');
-	$sqlInsert = "INSERT INTO nivel_1 ".
+	$sqlInsert = "INSERT INTO eval_datos ".
 		"(jurisdiccion,secretaria,subsecretaria,direccion,unidad,unidad2,cod_uni,evaluador,dni_evaluador,sit_esc_eval,niv_gr_eval,cargo_eval,agrup_eval,nombre_agente,dni_agente,legajo_agente,niv_gr_agente,agrup_agente,educacion,f_desde,f_hasta)".
 		"VALUES ".
-      "('$jurisdiccion','$secretaria','$subsecretaria','$direccion','$unidad','$unidad2','$cod_uni','$nom_eval','$dni_eval','$sit_esc_eval','$niv_gr_eval','$agrup_eval','$cargo_eval','$nombre_agente','$dni_agente','$leg_agente','$ng_agente','$agrupamiento2','$educacion','$f_desde','$f_hasta')";
+      "('$jurisdiccion','$secretaria','$subsecretaria','$direccion','$unidad','$unidad2','$cod_uni','$nom_eval','$dni_eval','$sit_esc_eval','$niv_gr_eval','$cargo_eval','$agrup_eval','$nombre_agente','$dni_agente','$leg_agente','$ng_agente','$agrupamiento2','$educacion','$f_desde','$f_hasta')";
            
 	$res = mysqli_query($conn,$sqlInsert);
 
@@ -2588,7 +3209,7 @@ function addEvalNiv1($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad
 		echo "<br>";
 		echo '<div class="container">';
 		echo '<div class="alert alert-success" role="alert">';
-		echo 'Registro Guardado Exitosamente.';
+		echo 'Datos de la Evaluación Guardados Exitosamente.';
 		echo "</div>";
 		echo "</div>";	
 	}else{
@@ -2603,17 +3224,17 @@ function addEvalNiv1($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad
 
 
 /*
-** Funcion de carga a base de datos tabla evaluaciones
+** Funcion de carga a base de datos tabla evaluaciones6
 */
 
-function addEvaluacion($nombre_agente,$dni_agente,$ng_agente,$revista,$nivel,$sum,$result,$f_desde,$f_hasta,$conn){
+function addEvaluacion6($item11,$item12,$item13,$item2,$item3,$item4,$nombre_agente,$dni_agente,$ng_agente,$revista,$nivel,$sum,$result,$f_desde,$f_hasta,$estado,$conn){
 
 		
 	mysqli_select_db('siseval');
-	$sqlInsert = "INSERT INTO evaluaciones ".
-		"(agente,dni,nivel_grado,revista,nivel,puntaje,calificacion,f_desde,f_hasta)".
+	$sqlInsert = "INSERT INTO evaluaciones6 ".
+		"(item11,item12,item13,item2,item3,item4,agente,dni,nivel_grado,revista,nivel,puntaje,calificacion,f_desde,f_hasta,estado)".
 		"VALUES ".
-      "('$nombre_agente','$dni_agente','$ng_agente','$revista','$nivel','$sum','$result','$f_desde','$f_hasta')";
+      "('$item11','$item12','$item13','$item2','$item3','$item4','$nombre_agente','$dni_agente','$ng_agente','$revista','$nivel','$sum','$result','$f_desde','$f_hasta','$estado')";
            
 	$res = mysqli_query($conn,$sqlInsert);
 
@@ -2623,7 +3244,10 @@ function addEvaluacion($nombre_agente,$dni_agente,$ng_agente,$revista,$nivel,$su
 		echo "<br>";
 		echo '<div class="container">';
 		echo '<div class="alert alert-success" role="alert">';
-		echo 'Registro Guardado Exitosamente.';
+		echo 'La evaluación ha sido guardada Exitosamente.';
+		echo 'Esta estará en estado ABIERTA hasta que el superior determine la aprobación de la misma y se cambie a estado CERRADA.<br>';
+		echo 'En en caso de existir modificaciones podrá realizar las mismas desde el botón Editar.<br>';
+		echo 'Una vez que el estado sea CERRADA, no se podrán realizar cambios en la evaluación, hasta volver a poner el estado en ABIERTA';
 		echo "</div>";
 		echo "</div>";	
 	}else{
@@ -2635,6 +3259,118 @@ function addEvaluacion($nombre_agente,$dni_agente,$ng_agente,$revista,$nivel,$su
 		echo "</div>";
 	}
 }
+
+
+/*
+** Funcion de carga a base de datos tabla evaluaciones1
+*/
+
+function addEvaluacion1($item1,$item2,$item3,$item41,$item42,$item5,$item61,$item62,$item71,$item72,$item8,$item9,$item10,$item11,$nombre_agente,$dni_agente,$ng_agente,$revista,$nivel,$sum,$result,$f_desde,$f_hasta,$estado,$conn){
+
+		
+	mysqli_select_db('siseval');
+	$sqlInsert = "INSERT INTO evaluaciones1 ".
+        "(item1,item2,item3,item41,item42,item5,item61,item62,item71,item72,item8,item9,item10,item11,agente,dni,nivel_grado,revista,nivel,puntaje,
+        calificacion,f_desde,f_hasta,estado)".
+		"VALUES ".
+      "('$item1','$item2','$item3','$item41','$item42','$item5','$item61','$item62','$item71','$item72','$item8','$item9','$item10','$item11','$nombre_agente','$dni_agente','$ng_agente','$revista','$nivel','$sum','$result','$f_desde','$f_hasta','$estado')";
+           
+	$res = mysqli_query($conn,$sqlInsert);
+
+
+	if($res){
+		//mysqli_query($conn,$sqlInsert);
+		echo "<br>";
+		echo '<div class="container">';
+		echo '<div class="alert alert-success" role="alert">';
+		echo 'La evaluación ha sido guardada Exitosamente.';
+		echo 'Esta estará en estado ABIERTA hasta que el superior determine la aprobación de la misma y se cambie a estado CERRADA.<br>';
+		echo 'En en caso de existir modificaciones podrá realizar las mismas desde el botón Editar.<br>';
+		echo 'Una vez que el estado sea CERRADA, no se podrán realizar cambios en la evaluación, hasta volver a poner el estado en ABIERTA';
+		echo "</div>";
+		echo "</div>";	
+	}else{
+		echo "<br>";
+		echo '<div class="container">';
+		echo '<div class="alert alert-warning" role="alert">';
+		echo "Hubo un error al guardar el Registro!." .mysqli_error($conn);
+		echo "</div>";
+		echo "</div>";
+	}
+}
+
+
+//////////////////// SECCION ACTUALIZACION BASE DE DATOS /////////////////////////////
+
+/**
+** Funcion para actualizar tabla evaluaciones1
+**/
+
+function updateResultadoEval1($id,$item1,$item2,$item3,$item41,$item42,$item5,$item61,$item62,$item71,$item72,$item8,$item9,$item10,$item11,$nombre_agente,$dni_agente,$ng_agente,$sum,$result,$f_desde,$f_hasta,$estado,$nom_eval,$conn){
+
+		
+	mysqli_select_db('siseval');
+	$sqlInsert = "update evaluaciones1 set item1 = '$item1', item2 = '$item2', item3 = '$item3', item41 = '$item41', item42 = '$item42', 
+	item5 = '$item5', item61 = '$item61', item62 = '$item62', item71 = '$item71', item72 = '$item72', item8 = '$item8', item9 = '$item9', item10 = '$item10', item11 = '$item11', agente = '$nombre_agente', dni = '$dni_agente', nivel_grado = '$ng_agente', puntaje = '$sum', calificacion = '$result', f_desde = '$f_desde', f_hasta = '$f_hasta', estado = '$estado', evaluador = '$nom_eval' where id = '$id'";
+           
+	$res = mysqli_query($conn,$sqlInsert);
+
+
+	if($res){
+		//mysqli_query($conn,$sqlInsert);
+		echo "<br>";
+		echo '<div class="container">';
+		echo '<div class="alert alert-success" role="alert">';
+		echo 'Registro Actualizado Exitosamente.<br>';
+		echo "La Evaluación de $nombre_agente ha sido cerrada Satisfactoriamente";
+		echo "</div>";
+		echo "</div>";	
+	}else{
+		echo "<br>";
+		echo '<div class="container">';
+		echo '<div class="alert alert-warning" role="alert">';
+		echo "Hubo un error al Actualizar el Registro!." .mysqli_error($conn);
+		echo "</div>";
+		echo "</div>";
+	}
+}
+
+/**
+** Funcion para actualizar tabla evaluaciones6
+**/
+
+function updateResultadoEval6($id,$item11,$item12,$item13,$item2,$item3,$item4,$nombre_agente,$dni_agente,$ng_agente,$sum,$result,$f_desde,$f_hasta,$estado,$evaluador,$conn){
+
+		
+	mysqli_select_db('siseval');
+	$sqlInsert = "update evaluaciones6 set item11 = '$item11', item12 = '$item12', item13 = '$item13', item2 = '$item2', item3 = '$item3', 
+	item4 = '$item4', agente = '$nombre_agente', dni = '$dni_agente', nivel_grado = '$ng_agente', puntaje = '$sum', calificacion = '$result', 
+	f_desde = '$f_desde', f_hasta = '$f_hasta', estado = '$estado', evaluador = '$evaluador' where id = '$id'";
+           
+	$res = mysqli_query($conn,$sqlInsert);
+
+
+	if($res){
+		//mysqli_query($conn,$sqlInsert);
+		echo "<br>";
+		echo '<div class="container">';
+		echo '<div class="alert alert-success" role="alert">';
+		echo 'Registro Actualizado Exitosamente.<br>';
+		echo "La Evaluación de $nombre_agente ha sido cerrada Satisfactoriamente";
+		echo "</div>";
+		echo "</div>";	
+	}else{
+		echo "<br>";
+		echo '<div class="container">';
+		echo '<div class="alert alert-warning" role="alert">';
+		echo "Hubo un error al Actualizar el Registro!." .mysqli_error($conn);
+		echo "</div>";
+		echo "</div>";
+	}
+}
+
+
+/////////////////////////////// SECCION FORMULARIO 1 RESULTADOS ///////////////////////////////////
 
 /*
 ** Funcion que carga el formulario de resultados Formulario 1 Gerencial
@@ -2750,7 +3486,7 @@ function resultadoForm1($nombre_agente,$item1,$item2,$item3,$item41,$item42,$ite
 }
 
 
-
+/////////////////////////////// SECCION FORMULARIO 2 RESULTADOS ///////////////////////////////////
 /*
 ** Funcion que carga el formulario de resultados Formulario 2 Medio Tecnico
 */
@@ -2856,6 +3592,8 @@ function resultadoForm2($nombre_agente,$item1,$item2,$item3,$item4,$item5,$item6
 
 }
 
+
+/////////////////////////////// SECCION FORMULARIO 3 RESULTADOS ///////////////////////////////////
 
 /*
 ** Funcion que carga el formulario de resultados Formulario 3 Medio con personal a cargo
@@ -2963,8 +3701,9 @@ function resultadoForm3($nombre_agente,$item1,$item2,$item3,$item4,$item5,$item6
 }
 
 
+/////////////////////////////// SECCION FORMULARIO 4 RESULTADOS ///////////////////////////////////
 /*
-** Funcion que carga el formulario de resultados Formulario 3 Medio con personal a cargo
+** Funcion que carga el formulario de resultados Formulario 4 Medio con personal a cargo
 */
 function resultadoForm4($nombre_agente,$item1,$item2,$item3,$item4,$item5,$item6,$item7,$item8,$item9,$item10,$sum,$result,$f_desde,$f_hasta){
 
@@ -3061,6 +3800,7 @@ function resultadoForm4($nombre_agente,$item1,$item2,$item3,$item4,$item5,$item6
 }
 
 
+/////////////////////////////// SECCION FORMULARIO 5 RESULTADOS ///////////////////////////////////
 /*
 ** Funcion que carga el formulario de resultados Formulario 5 Operativo con personal a cargo
 */
@@ -3150,6 +3890,8 @@ function resultadoForm5($nombre_agente,$item1,$item2,$item31,$item32,$item33,$it
 
 }
 
+
+/////////////////////////////// SECCION FORMULARIO 6 RESULTADOS ///////////////////////////////////
 /*
 ** Funcion que carga el formulario de resultados Formulario 6 Operativo sin personal a cargo
 */
@@ -3204,6 +3946,353 @@ function resultadoForm6($nombre_agente,$item11,$item12,$item13,$item2,$item3,$it
         <h3>Calificación Final: <strong>'.$result.'<strong></h3><hr>';
         
         if($result == "Regular" || $result == "Deficiente"){
+        
+		echo '<div class="container">';
+		echo '<div class="alert alert-warning" role="alert">';
+		echo '<img src="../../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> Ante dicha Calificación deberá utilizar el Formulario B. Por favor completelo accediendo desde el botón aquí abajo';
+		echo '<hr><a href="../evaluaciones/formularioB.php" class="btn btn-primary btn-sm " ><span class="glyphicon glyphicon-list-alt"></span> Formulario B</a>';
+		echo "</div>";
+		echo "</div>";
+		
+	  
+        }
+        
+        echo '</div>
+        <div class="panel-footer">
+        <p style="text-align: center;""><strong>IMPORTANTE</strong></p><hr>
+        <p>1. En caso que el agente haya obtenido una calificación "Regular" o "Deficiente" se deberá adjuntar el Formulario B con el Programa de Recuperación</p>
+        <p>2. Los Agentes que hayan tenido sanciones disciplinarias en el período evaluado y/o en algunos de los factores evaluados haya obtenidos subtotal de "0" o "1", no pueden calificar con "Muy Bueno" o "Destacado"</p>
+        
+        </div>
+      </div>
+    </div>
+    
+   
+  </div>
+</div>';
+
+}
+
+
+
+/////////////////////// SECCION LISTADO DE EVALUACIONES /////////////////////
+
+function eval1($conn){
+
+if($conn){
+	
+	$sql = "SELECT * FROM evaluaciones1";
+    	mysqli_select_db('siseval');
+    	$resultado = mysqli_query($conn,$sql);
+	//mostramos fila x fila
+	$count = 0;
+	echo '<div class="alert alert-success">
+	      <img src="../../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"> Evaluaciones Nivel 1 - Gerencial
+	      </div><br>';
+	
+            echo "<table class='display compact' style='width:100%' id='myTable'>";
+              echo "<thead>
+		    <th class='text-nowrap text-center'>ID</th>
+		    <th class='text-nowrap text-center'>Nombre y Apellido</th>
+            <th class='text-nowrap text-center'>CUIL/DNI</th>
+            <th class='text-nowrap text-center'>Nivel y Grado</th>
+            <th class='text-nowrap text-center'>Situación Revista</th>
+            <th class='text-nowrap text-center'>Nivel</th>
+            <th class='text-nowrap text-center'>Puntaje</th>
+            <th class='text-nowrap text-center'>Calificación</th>
+            <th class='text-nowrap text-center'>Fecha Desde</th>
+            <th class='text-nowrap text-center'>Fecha Hasta</th>
+            <th class='text-nowrap text-center'>Estado</th>
+            <th>&nbsp;</th>
+            </thead>";
+
+
+	while($fila = mysqli_fetch_array($resultado)){
+			  // Listado normal
+			 echo "<tr>";
+			 echo "<td align=center>".$fila['id']."</td>";
+			 echo "<td align=center>".$fila['agente']."</td>";
+			 echo "<td align=center>".$fila['dni']."</td>";
+			 echo "<td align=center>".$fila['nivel_grado']."</td>";
+			 echo "<td align=center>".$fila['revista']."</td>";
+			 echo "<td align=center>".$fila['nivel']."</td>";
+			 echo "<td align=center>".$fila['puntaje']."</td>";
+			 echo "<td align=center>".$fila['calificacion']."</td>";
+			 echo "<td align=center>".$fila['f_desde']."</td>";
+			 echo "<td align=center>".$fila['f_hasta']."</td>";
+			 echo "<td align=center>".$fila['estado']."</td>";
+			 echo "<td class='text-nowrap'>";
+			 if($fila['estado'] == 'abierta'){
+                echo '<a href="../evaluaciones/estado.php?id='.$fila['id'].' & nivel='.$fila['nivel'].'" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-refresh"></span> Cambiar Estado</a>';
+			 }
+			 if($fila['estado'] == 'cerrada'){
+                echo '<a href="../evaluaciones/verEvaluacion1.php?id='.$fila['id'].'" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Ver Evaluación</a>';
+			 }
+			 echo "</td>";
+			 $count++;
+		}
+
+		echo "</table>";
+		echo "<br>";
+		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
+		echo '<hr>';
+		}else{
+		  echo 'Connection Failure...';
+		}
+
+    mysqli_close($conn);
+
+}
+
+
+
+function eval6($conn){
+
+if($conn){
+	
+	$sql = "SELECT * FROM evaluaciones6";
+    	mysqli_select_db('siseval');
+    	$resultado = mysqli_query($conn,$sql);
+	//mostramos fila x fila
+	$count = 0;
+	echo '<div class="alert alert-success">
+	      <img src="../../icons/apps/preferences-contact-list.png"  class="img-reponsive img-rounded"> Evaluaciones Nivel 6 - Opertivo sin personal a Cargo
+	      </div><br>';
+	
+            echo "<table class='display compact' style='width:100%' id='myTable'>";
+              echo "<thead>
+		    <th class='text-nowrap text-center'>ID</th>
+		    <th class='text-nowrap text-center'>Nombre y Apellido</th>
+            <th class='text-nowrap text-center'>CUIL/DNI</th>
+            <th class='text-nowrap text-center'>Nivel y Grado</th>
+            <th class='text-nowrap text-center'>Situación Revista</th>
+            <th class='text-nowrap text-center'>Nivel</th>
+            <th class='text-nowrap text-center'>Puntaje</th>
+            <th class='text-nowrap text-center'>Calificación</th>
+            <th class='text-nowrap text-center'>Fecha Desde</th>
+            <th class='text-nowrap text-center'>Fecha Hasta</th>
+            <th class='text-nowrap text-center'>Estado</th>
+            <th>&nbsp;</th>
+            </thead>";
+
+
+	while($fila = mysqli_fetch_array($resultado)){
+			  // Listado normal
+			 echo "<tr>";
+			 echo "<td align=center>".$fila['id']."</td>";
+			 echo "<td align=center>".$fila['agente']."</td>";
+			 echo "<td align=center>".$fila['dni']."</td>";
+			 echo "<td align=center>".$fila['nivel_grado']."</td>";
+			 echo "<td align=center>".$fila['revista']."</td>";
+			 echo "<td align=center>".$fila['nivel']."</td>";
+			 echo "<td align=center>".$fila['puntaje']."</td>";
+			 echo "<td align=center>".$fila['calificacion']."</td>";
+			 echo "<td align=center>".$fila['f_desde']."</td>";
+			 echo "<td align=center>".$fila['f_hasta']."</td>";
+			 echo "<td align=center>".$fila['estado']."</td>";
+			 echo "<td class='text-nowrap'>";
+			 if($fila['estado'] == 'abierta'){
+                echo '<a href="../evaluaciones/estado.php?id='.$fila['id'].' & nivel='.$fila['nivel'].'" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-refresh"></span> Cambiar Estado</a>';
+			 }
+			 if($fila['estado'] == 'cerrada'){
+                echo '<a href="../evaluaciones/verEvaluacion6.php?id='.$fila['id'].'" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Ver Evaluación</a>';
+			 }
+			 echo "</td>";
+			 $count++;
+		}
+
+		echo "</table>";
+		echo "<br>";
+		echo '<button type="button" class="btn btn-primary">Cantidad de Registros:  ' .$count; echo '</button>';
+		echo '<hr>';
+		}else{
+		  echo 'Connection Failure...';
+		}
+
+    mysqli_close($conn);
+
+}
+
+
+////////////////////////// SECCION VER EVALUACIONES ///////////////////////
+
+/*
+** Funcion que carga el formulario de resultados Formulario 1 Gerencial
+*/
+function verEval1($id,$conn){
+    
+    $sql = "select * from evaluaciones1 where id = '$id'";
+    mysqli_select_db('siseval');
+	$query = mysqli_query($conn,$sql);
+	$fila = mysqli_fetch_assoc($query);
+
+
+   echo '<div class="container-fluid">    
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Resultado Evaluación Agente: '.$fila['agente'].'</div>
+        <div class="panel-body">
+                
+        <h2>Período Evaluado Desde: <strong>'.$fila['f_desde'].'</strong> Hasta: <strong>'.$fila['f_hasta'].'</strong></h2>
+        <p>Puntajes obtenidos en cada Item</p>            
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="text-nowrap text-center">Item</th>
+        <th class="text-nowrap text-center">Puntaje</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td align=left>1. Planificación</td>
+        <td align=center>'.$fila['item1'].'</td>
+        </tr>
+      <tr>
+        <td align=left>2. Gestión de Planes y Programas</td>
+        <td align=center>'.$fila['item2'].'</td>
+        </tr>
+      <tr>
+        <td align=left>3. Control de Resultados</td>
+        <td align=center>'.$fila['item3'].'</td>
+        </tr>
+        <tr>
+        <td align=left>4.1. Organizar el Trabajo</td>
+        <td align=center>'.$fila['item41'].'</td>
+        </tr>
+        <tr>
+        <td align=left>4.2. Resolver Problemas</td>
+        <td align=center>'.$fila['item42'].'</td>
+        </tr>
+        <tr>
+        <td align=left>5. Conducción</td>
+        <td align=center>'.$fila['item5'].'</td>
+        </tr>
+        <tr>
+        <td align=left>6.1. Asumir la Representación</td>
+        <td align=center>'.$fila['item61'].'</td>
+        </tr>
+        <tr>
+        <td align=left>6.2. Cerrar Transacciones</td>
+        <td align=center>'.$fila['item62'].'</td>
+        </tr>
+        <tr>
+        <td align=left>7.1. Interpretación</td>
+        <td align=center>'.$fila['item71'].'</td>
+        </tr>
+        <tr>
+        <td align=left>7.2. Maximizar Oportunidades</td>
+        <td align=center>'.$fila['item72'].'</td>
+        </tr>
+        <tr>
+        <td align=left>8. Iniciativa</td>
+        <td align=center>'.$fila['item8'].'</td>
+        </tr>
+        <tr>
+        <td align=left>9. Adaptabilidad</td>
+        <td align=center>'.$fila['item9'].'</td>
+        </tr>
+        <tr>
+        <td align=left>10. Autonomía</td>
+        <td align=center>'.$fila['item10'].'</td>
+        </tr>
+        <tr>
+        <td align=left>11. Identificación con la Organización</td>
+        <td align=center>'.$fila['item11'].'</td>
+        </tr>
+    </tbody>
+  </table><hr>
+              
+        <h3>Puntaje Total Obtenido: <strong>'.$fila['puntaje'].'</strong></h3><hr>
+        <h3>Calificación Final: <strong>'.$fila['calificacion'].'<strong></h3><hr>';
+        
+        if($fila['calificacion'] == "Regular" || $fila['calificacion'] == "Deficiente"){
+        
+		echo '<div class="container">';
+		echo '<div class="alert alert-warning" role="alert">';
+		echo '<img src="../../icons/status/task-attempt.png"  class="img-reponsive img-rounded"> Ante dicha Calificación deberá utilizar el Formulario B. Por favor completelo accediendo desde el botón aquí abajo';
+		echo '<hr><a href="../evaluaciones/formularioB.php" class="btn btn-primary btn-sm " ><span class="glyphicon glyphicon-list-alt"></span> Formulario B</a>';
+		echo "</div>";
+		echo "</div>";
+		
+	  
+        }
+        
+        echo '</div>
+        <div class="panel-footer">
+        <p style="text-align: center;""><strong>IMPORTANTE</strong></p><hr>
+        <p>1. En caso que el agente haya obtenido una calificación "Regular" o "Deficiente" se deberá adjuntar el Formulario B con el Programa de Recuperación</p>
+        <p>2. Los Agentes que hayan tenido sanciones disciplinarias en el período evaluado y/o en algunos de los factores evaluados haya obtenidos subtotal de "0" o "1", no pueden calificar con "Muy Bueno" o "Destacado"</p>
+        
+        </div>
+      </div>
+    </div>
+    
+   
+  </div>
+</div>';
+
+}
+
+
+/*
+** Funcion que carga el formulario de ver evaluaciones Formulario 6 Operativo sin personal a cargo
+*/
+function verEval6($id,$conn){
+    
+    $sql = "select * from evaluaciones6 where id = '$id'";
+    mysqli_select_db('siseval');
+	$query = mysqli_query($conn,$sql);
+	$fila = mysqli_fetch_assoc($query);
+
+   echo '<div class="container-fluid">    
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Resultado Evaluación Agente: '.$fila['agente'].'</div>
+        <div class="panel-body">
+                
+        <h2>Período Evaluado Desde: <strong>'.$fila['f_desde'].'</strong> Hasta: <strong>'.$fila['f_hasta'].'</strong></h2>
+        <p>Puntajes obtenidos en cada Item</p>            
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="text-nowrap text-center">Item</th>
+        <th class="text-nowrap text-center">Puntaje</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td align=left>1.1 Cantidad de Trabajo</td>
+        <td align=center>'.$fila['item11'].'</td>
+        </tr>
+      <tr>
+        <td align=left>1.2 Calidad de Trabajo</td>
+        <td align=center>'.$fila['item12'].'</td>
+        </tr>
+      <tr>
+        <td align=left>1.3 Manejo de Recursos</td>
+        <td align=center>'.$fila['item13'].'</td>
+        </tr>
+        <tr>
+        <td align=left>2. Conocimientos de las Tareas</td>
+        <td align=center>'.$fila['item2'].'</td>
+        </tr>
+        <tr>
+        <td align=left>3. Criterio</td>
+        <td align=center>'.$fila['item3'].'</td>
+        </tr>
+        <tr>
+        <td align=left>4. Colaboración</td>
+        <td align=center>'.$fila['item4'].'</td>
+        </tr>
+       </tbody>
+  </table><hr>
+              
+        <h3>Puntaje Total Obtenido: <strong>'.$fila['puntaje'].'</strong></h3><hr>
+        <h3>Calificación Final: <strong>'.$fila['calificacion'].'<strong></h3><hr>';
+        
+        if($fila['calificacion'] == "Regular" || $fila['calificacion'] == "Deficiente"){
         
 		echo '<div class="container">';
 		echo '<div class="alert alert-warning" role="alert">';

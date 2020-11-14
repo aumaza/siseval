@@ -245,6 +245,55 @@ $(document).ready(function(){
       </h4>
     </div>
     <div id="collapse3" class="panel-collapse collapse">
+      <div class="panel-body">
+      <a href="#" data-toggle="tooltip" data-placement="right" title="Evaluaciones Nivel Gerencial"><button type="submit" class="btn btn-default btn-sm" name="G"><img class="img-reponsive img-rounded" src="../../icons/actions/view-list-text.png" /> Evaluaciones Nivel 1</button></a><hr>
+      
+      <a href="#" data-toggle="tooltip" data-placement="right" title="Operativo sin personal a cargo"><button type="submit" class="btn btn-default btn-sm" name="F"><img class="img-reponsive img-rounded" src="../../icons/actions/view-list-text.png" /> Evaluaciones Nivel 6</button></a>
+      
+      </div>
+    </div>
+  </div>
+</div>'; 
+	
+	}else{
+	
+	echo '
+    <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+        Datos Personales</a>
+      </h4>
+    </div>
+    <div id="collapse4" class="panel-collapse collapse">
+      <div class="panel-body">
+      <a href="#" data-toggle="tooltip" data-placement="right" title="Editar datos Personales"><button type="submit" class="btn btn-default btn-sm" name="D"><img class="img-reponsive img-rounded" src="../../icons/actions/user-group-properties.png" /> Mis Datos</button></a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+        Evaluaciones</a>
+      </h4>
+    </div>
+    <div id="collapse5" class="panel-collapse collapse">
+      <div class="panel-body">
+      <a href="#" data-toggle="tooltip" data-placement="right" title="Historial de Evaluaciones"><button type="submit" class="btn btn-default btn-sm" name="E"><img class="img-reponsive img-rounded" src="../../icons/actions/view-pim-tasks.png" /> Evaluaciones</button></a>     
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">
+        Collapsible Group 3</a>
+      </h4>
+    </div>
+    <div id="collapse6" class="panel-collapse collapse">
       <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
       sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
       minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -252,11 +301,7 @@ $(document).ready(function(){
     </div>
   </div>
 </div>'; 
-	
-	}else{
-	
-	echo '<a href="#" data-toggle="tooltip" data-placement="right" title="Editar datos Personales"><button type="submit" class="btn btn-default btn-sm" name="D"><img class="img-reponsive img-rounded" src="../../icons/actions/user-group-properties.png" /> Mis Datos</button></a><hr>
-	      <a href="#" data-toggle="tooltip" data-placement="right" title="Historial de Evaluaciones"><button type="submit" class="btn btn-default btn-sm" name="E"><img class="img-reponsive img-rounded" src="../../icons/actions/view-pim-tasks.png" /> Evaluaciones</button></a><hr>';
+	      
 	}
 	?>
 	</form>
@@ -286,7 +331,14 @@ $(document).ready(function(){
 	      get_file();
 	          
       }
-        
+      if(isset($_POST['F'])){
+	      eval6($conn);
+	          
+      }
+      if(isset($_POST['G'])){
+	      eval1($conn);
+	          
+      }  
    
    ?>
       

@@ -110,9 +110,8 @@ $(document).ready(function(){
 
 <?php
   
-  $nivel = mysqli_real_escape_string($conn,$_POST["nivel"]);
-  $revista = mysqli_real_escape_string($conn,$_POST["revista"]);
-  
+  $id = mysqli_real_escape_string($conn,$_POST['id']);
+   
   $jurisdiccion = mysqli_real_escape_string($conn,$_POST["juris"]);
   $secretaria = mysqli_real_escape_string($conn,$_POST["secretaria"]);
   $subsecretaria = mysqli_real_escape_string($conn,$_POST["subsecretaria"]);
@@ -135,7 +134,7 @@ $(document).ready(function(){
   $f_desde = mysqli_real_escape_string($conn,$_POST["f_desde"]);
   $f_hasta = mysqli_real_escape_string($conn,$_POST["f_hasta"]);
   
-  addEvalDatos($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad,$unidad2,$cod_uni,$nom_eval,$dni_eval,$sit_esc_eval,$niv_gr_eval,$agrup_eval,$cargo_eval,$nombre_agente,$dni_agente,$leg_agente,$ng_agente,$agrupamiento2,$educacion,$f_desde,$f_hasta,$conn);
+  //updateDatosEval($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad,$unidad2,$cod_uni,$nom_eval,$dni_eval,$sit_esc_eval,$niv_gr_eval,$agrup_eval,$cargo_eval,$nombre_agente,$dni_agente,$leg_agente,$ng_agente,$agrupamiento2,$educacion,$f_desde,$f_hasta,$conn);
 
   $item1 = mysqli_real_escape_string($conn,$_POST["item1"]);
   $item2 = mysqli_real_escape_string($conn,$_POST["item2"]);
@@ -151,10 +150,13 @@ $(document).ready(function(){
   $item9 = mysqli_real_escape_string($conn,$_POST["item9"]);
   $item10 = mysqli_real_escape_string($conn,$_POST["item10"]);
   $item11 = mysqli_real_escape_string($conn,$_POST["item11"]);
+  $estado = mysqli_real_escape_string($conn,$_POST["estado"]);
+  
+  
   
   $sum = $item1+$item2+$item3+$item41+$item42+$item5+$item61+$item62+$item71+$item72+$item8+$item9+$item10+$item11;
   
-  if($sum >= 0 && $sum <= 8){
+   if($sum >= 0 && $sum <= 8){
       $result = "Deficiente";
   }
   if($sum >= 9 && $sum <= 22){
@@ -170,17 +172,17 @@ $(document).ready(function(){
       $result = "Destacado";
   }
   
-  $estado = "abierta";
-  addEvaluacion1($item1,$item2,$item3,$item41,$item42,$item5,$item61,$item62,$item71,$item72,$item8,$item9,$item10,$item11,$nombre_agente,$dni_agente,$ng_agente,$revista,$nivel,$sum,$result,$f_desde,$f_hasta,$estado,$conn);
+   updateResultadoEval1($id,$item1,$item2,$item3,$item41,$item42,$item5,$item61,$item62,$item71,$item72,$item8,$item9,$item10,$item11,$nombre_agente,$dni_agente,$ng_agente,$sum,$result,$f_desde,$f_hasta,$estado,$nom_eval,$conn);
 
 if($conn){
 
     if(isset($_POST['A'])){
+    
         resultadoForm1($nombre_agente,$item1,$item2,$item3,$item41,$item42,$item5,$item61,$item62,$item71,$item72,$item8,$item9,$item10,$item11,$sum,$result,$f_desde,$f_hasta);
         }
       
   }else{
-  echo "Database Error Connection!!";
+  echo "Database Error Connection!!" .mysqli_error($conn);
 }
 ?>
 
