@@ -136,7 +136,7 @@ $(document).ready(function(){
     .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
-      height: 100%;
+      height: 150%;
     }
     
     /* Set black background color, white text and some padding */
@@ -250,6 +250,12 @@ $(document).ready(function(){
       
       <a href="#" data-toggle="tooltip" data-placement="right" title="Evaluaciones Nivel Medio Profesional"><button type="submit" class="btn btn-default btn-sm" name="H"><img class="img-reponsive img-rounded" src="../../icons/actions/view-list-text.png" /> Evaluaciones Nivel 2</button></a><hr>
       
+      <a href="#" data-toggle="tooltip" data-placement="right" title="Evaluaciones Nivel Medio con Personal a Cargo"><button type="submit" class="btn btn-default btn-sm" name="I"><img class="img-reponsive img-rounded" src="../../icons/actions/view-list-text.png" /> Evaluaciones Nivel 3</button></a><hr>
+      
+      <a href="#" data-toggle="tooltip" data-placement="right" title="Evaluaciones Nivel Medio sin Personal a Cargo"><button type="submit" class="btn btn-default btn-sm" name="J"><img class="img-reponsive img-rounded" src="../../icons/actions/view-list-text.png" /> Evaluaciones Nivel 4</button></a><hr>
+      
+      <a href="#" data-toggle="tooltip" data-placement="right" title="Evaluaciones Nivel Operativo con Personal a Cargo"><button type="submit" class="btn btn-default btn-sm" name="K"><img class="img-reponsive img-rounded" src="../../icons/actions/view-list-text.png" /> Evaluaciones Nivel 5</button></a><hr>
+      
       <a href="#" data-toggle="tooltip" data-placement="right" title="Operativo sin personal a cargo"><button type="submit" class="btn btn-default btn-sm" name="F"><img class="img-reponsive img-rounded" src="../../icons/actions/view-list-text.png" /> Evaluaciones Nivel 6</button></a>
       
       </div>
@@ -343,6 +349,18 @@ $(document).ready(function(){
       }  
       if(isset($_POST['H'])){
 	      eval2($conn);
+	          
+      }
+      if(isset($_POST['I'])){
+	      eval3($conn);
+	          
+      }
+      if(isset($_POST['J'])){
+	      eval4($conn);
+	          
+      }
+      if(isset($_POST['K'])){
+	      eval5($conn);
 	          
       }
    ?>

@@ -23,13 +23,15 @@
 	}
 	
 	
+	
+	
 ?>
 
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Formulario de Evaluación</title>
+  <title>Evaluación Final</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="../../icons/actions/story-editor.png" />
@@ -107,89 +109,14 @@ $(document).ready(function(){
 
 
 <?php
-
+  
+    
 if($conn){
 
-    $nivel = $_GET['nivel'];
-    
-  if($nivel == 1){
-
-      $id = $_GET['id'];
-	// obtenemos nombre del agente
-	$sql = "select * from evaluaciones1 where id = '$id'";
-	mysqli_select_db('siseval');
-	$query = mysqli_query($conn,$sql);
-	while($fila = mysqli_fetch_array($query)){
-	      $nivel = $fila['nivel'];
-	      $nombre = $fila['agente'];
-	      $f_desde = $fila['f_desde'];
-	      $f_hasta = $fila['f_hasta'];
-        }
-      editForm1($id,$nombre,$f_desde,$f_hasta,$conn);
+    $id = $_GET['id'];
+    verEval3($id,$conn);   
       
-      }
-      if($nivel == 2){
-      
-      $id = $_GET['id'];
-	// obtenemos nombre del agente
-	$sql = "select * from evaluaciones2 where id = '$id'";
-	mysqli_select_db('siseval');
-	$query = mysqli_query($conn,$sql);
-	while($fila = mysqli_fetch_array($query)){
-	      $nivel = $fila['nivel'];
-	      $nombre = $fila['agente'];
-	      $f_desde = $fila['f_desde'];
-	      $f_hasta = $fila['f_hasta'];
-        }
-      editForm2($id,$nombre,$f_desde,$f_hasta,$conn);
-      
-      }
-      if($nivel == 3){
-      
-      $id = $_GET['id'];
-	// obtenemos nombre del agente
-	$sql = "select * from evaluaciones3 where id = '$id'";
-	mysqli_select_db('siseval');
-	$query = mysqli_query($conn,$sql);
-	while($fila = mysqli_fetch_array($query)){
-	      $nivel = $fila['nivel'];
-	      $nombre = $fila['agente'];
-	      $f_desde = $fila['f_desde'];
-	      $f_hasta = $fila['f_hasta'];
-        }
-      editForm3($id,$nombre,$f_desde,$f_hasta,$conn);
-      
-      }
-      if($nivel == 4 && $niv_func_ejec == 0){
-      
-      //formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista);
-      
-      }
-      if($nivel == 5 && $niv_func_ejec == 0){
-      
-      //formulario5($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista);
-      
-      }
-      if($nivel == 6){
-      
-      $id = $_GET['id'];
-	// obtenemos nombre del agente
-	$sql = "select * from evaluaciones6 where id = '$id'";
-	mysqli_select_db('siseval');
-	$query = mysqli_query($conn,$sql);
-	while($fila = mysqli_fetch_array($query)){
-	      $nivel = $fila['nivel'];
-	      $nombre = $fila['agente'];
-	      $f_desde = $fila['f_desde'];
-	      $f_hasta = $fila['f_hasta'];
-        }
-      
-      editForm6($id,$nombre,$f_desde,$f_hasta,$conn);
-      
-      }
-
-
-}else{
+  }else{
   echo "Database Error Connection!!" .mysqli_error($conn);
 }
 ?>

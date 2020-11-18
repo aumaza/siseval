@@ -135,7 +135,7 @@ $(document).ready(function(){
   $f_desde = mysqli_real_escape_string($conn,$_POST["f_desde"]);
   $f_hasta = mysqli_real_escape_string($conn,$_POST["f_hasta"]);
   
-  //addEvalNiv1($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad,$unidad2,$cod_uni,$nom_eval,$dni_eval,$sit_esc_eval,$niv_gr_eval,$agrup_eval,$cargo_eval,$nombre_agente,$dni_agente,$leg_agente,$ng_agente,$agrupamiento2,$educacion,$f_desde,$f_hasta,$conn);
+  addEvalDatos($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad,$unidad2,$cod_uni,$nom_eval,$dni_eval,$sit_esc_eval,$niv_gr_eval,$agrup_eval,$cargo_eval,$nombre_agente,$dni_agente,$leg_agente,$ng_agente,$agrupamiento2,$educacion,$f_desde,$f_hasta,$conn);
 
   $item1 = mysqli_real_escape_string($conn,$_POST["item1"]);
   $item2 = mysqli_real_escape_string($conn,$_POST["item2"]);
@@ -168,7 +168,8 @@ $(document).ready(function(){
       $result = "Destacado";
   }
   
-  //addEvaluacion($nombre_agente,$dni_agente,$ng_agente,$revista,$nivel,$sum,$result,$f_desde,$f_hasta,$conn);
+  $estado = "abierta";
+  addEvaluacion3($item1,$item2,$item3,$item4,$item5,$item6,$item7,$item8,$item9,$item10,$item11,$item12,$nombre_agente,$dni_agente,$ng_agente,$revista,$nivel,$sum,$result,$f_desde,$f_hasta,$estado,$conn);
 
 if($conn){
 

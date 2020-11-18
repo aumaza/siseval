@@ -109,6 +109,33 @@ estado varchar(7) not null,
 evaluador varchar(90)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+#tabla evaluaciones2
+create table evaluaciones3(
+id int(11) auto_increment primary key,
+item1 int(11) not null,
+item2 int(11) not null,
+item3 int(11) not null,
+item4 int(11) not null,
+item5 int(11) not null,
+item6 int(11) not null,
+item7 int(11) not null,
+item8 int(11) not null,
+item9 int(11) not null,
+item10 int(11) not null,
+item11 int(11) not null,
+item12 int(11) not null,
+agente varchar(60) not null,
+dni varchar(11) not null,
+nivel_grado varchar(3) not null,
+revista varchar(17) not null,
+nivel varchar(1) not null,
+puntaje int(11) not null,
+calificacion varchar(13),
+f_desde date not null,
+f_hasta date not null,
+estado varchar(7) not null,
+evaluador varchar(90)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
