@@ -110,8 +110,7 @@ $(document).ready(function(){
 
 <?php
   
-  $nivel = mysqli_real_escape_string($conn,$_POST["nivel"]);
-  $revista = mysqli_real_escape_string($conn,$_POST["revista"]);
+  $id = mysqli_real_escape_string($conn,$_POST['id']);
   
   $jurisdiccion = mysqli_real_escape_string($conn,$_POST["juris"]);
   $secretaria = mysqli_real_escape_string($conn,$_POST["secretaria"]);
@@ -135,7 +134,7 @@ $(document).ready(function(){
   $f_desde = mysqli_real_escape_string($conn,$_POST["f_desde"]);
   $f_hasta = mysqli_real_escape_string($conn,$_POST["f_hasta"]);
   
-  addEvalDatos($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad,$unidad2,$cod_uni,$nom_eval,$dni_eval,$sit_esc_eval,$niv_gr_eval,$agrup_eval,$cargo_eval,$nombre_agente,$dni_agente,$leg_agente,$ng_agente,$agrupamiento2,$educacion,$f_desde,$f_hasta,$conn);
+  //addEvalDatos($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad,$unidad2,$cod_uni,$nom_eval,$dni_eval,$sit_esc_eval,$niv_gr_eval,$agrup_eval,$cargo_eval,$nombre_agente,$dni_agente,$leg_agente,$ng_agente,$agrupamiento2,$educacion,$f_desde,$f_hasta,$conn);
 
   $item1 = mysqli_real_escape_string($conn,$_POST["item1"]);
   $item2 = mysqli_real_escape_string($conn,$_POST["item2"]);
@@ -145,6 +144,7 @@ $(document).ready(function(){
   $item4 = mysqli_real_escape_string($conn,$_POST["item4"]);
   $item5 = mysqli_real_escape_string($conn,$_POST["item5"]);
   $item6 = mysqli_real_escape_string($conn,$_POST["item6"]);
+  $estado = mysqli_real_escape_string($conn,$_POST["estado"]);
   
   
   
@@ -166,8 +166,7 @@ $(document).ready(function(){
       $result = "Destacado";
   }
   
-  $estado = "abierta";
-  addEvaluacion5($item1,$item2,$item31,$item32,$item33,$item4,$item5,$item6,$nombre_agente,$dni_agente,$ng_agente,$revista,$nivel,$sum,$result,$f_desde,$f_hasta,$estado,$conn);
+  updateResultadoEval5($id,$item1,$item2,$item31,$item32,$item33,$item4,$item5,$item6,$nombre_agente,$dni_agente,$ng_agente,$sum,$result,$f_desde,$f_hasta,$estado,$nom_eval,$conn);
 
 if($conn){
 

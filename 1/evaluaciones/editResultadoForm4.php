@@ -110,8 +110,7 @@ $(document).ready(function(){
 
 <?php
   
-  $nivel = mysqli_real_escape_string($conn,$_POST["nivel"]);
-  $revista = mysqli_real_escape_string($conn,$_POST["revista"]);
+  $id = mysqli_real_escape_string($conn,$_POST['id']);
   
   $jurisdiccion = mysqli_real_escape_string($conn,$_POST["juris"]);
   $secretaria = mysqli_real_escape_string($conn,$_POST["secretaria"]);
@@ -135,44 +134,44 @@ $(document).ready(function(){
   $f_desde = mysqli_real_escape_string($conn,$_POST["f_desde"]);
   $f_hasta = mysqli_real_escape_string($conn,$_POST["f_hasta"]);
   
-  addEvalDatos($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad,$unidad2,$cod_uni,$nom_eval,$dni_eval,$sit_esc_eval,$niv_gr_eval,$agrup_eval,$cargo_eval,$nombre_agente,$dni_agente,$leg_agente,$ng_agente,$agrupamiento2,$educacion,$f_desde,$f_hasta,$conn);
+  //addEvalDatos($jurisdiccion,$secretaria,$subsecretaria,$direccion,$unidad,$unidad2,$cod_uni,$nom_eval,$dni_eval,$sit_esc_eval,$niv_gr_eval,$agrup_eval,$cargo_eval,$nombre_agente,$dni_agente,$leg_agente,$ng_agente,$agrupamiento2,$educacion,$f_desde,$f_hasta,$conn);
 
   $item1 = mysqli_real_escape_string($conn,$_POST["item1"]);
   $item2 = mysqli_real_escape_string($conn,$_POST["item2"]);
-  $item31 = mysqli_real_escape_string($conn,$_POST["item31"]);
-  $item32 = mysqli_real_escape_string($conn,$_POST["item32"]);
-  $item33 = mysqli_real_escape_string($conn,$_POST["item33"]);
+  $item3 = mysqli_real_escape_string($conn,$_POST["item3"]);
   $item4 = mysqli_real_escape_string($conn,$_POST["item4"]);
   $item5 = mysqli_real_escape_string($conn,$_POST["item5"]);
   $item6 = mysqli_real_escape_string($conn,$_POST["item6"]);
+  $item7 = mysqli_real_escape_string($conn,$_POST["item7"]);
+  $item8 = mysqli_real_escape_string($conn,$_POST["item8"]);
+  $item9 = mysqli_real_escape_string($conn,$_POST["item9"]);
+  $item10 = mysqli_real_escape_string($conn,$_POST["item10"]);
+  $estado = mysqli_real_escape_string($conn,$_POST["estado"]);
   
+  $sum = $item1+$item2+$item3+$item4+$item5+$item6+$item7+$item8+$item9+$item10;
   
-  
-  $sum = $item1+$item2+$item31+$item32+$item33+$item4+$item5+$item6;
-  
-  if($sum >= 0 && $sum <= 4){
+  if($sum >= 0 && $sum <= 6){
       $result = "Deficiente";
   }
-  if($sum >= 5 && $sum <= 12){
+  if($sum >= 7 && $sum <= 16){
       $result = "Regular";
   }
-  if($sum >= 13 && $sum <= 20){
+  if($sum >= 17 && $sum <= 26){
       $result = "Bueno";
   }
-  if($sum >= 21 && $sum <= 28){
+  if($sum >= 27 && $sum <= 36){
       $result = "Muy Bueno";
   }
-  if($sum >= 29 && $sum <= 32){
+  if($sum >= 37 && $sum <= 40){
       $result = "Destacado";
   }
   
-  $estado = "abierta";
-  addEvaluacion5($item1,$item2,$item31,$item32,$item33,$item4,$item5,$item6,$nombre_agente,$dni_agente,$ng_agente,$revista,$nivel,$sum,$result,$f_desde,$f_hasta,$estado,$conn);
+  updateResultadoEval4($id,$item1,$item2,$item3,$item4,$item5,$item6,$item7,$item8,$item9,$item10,$nombre_agente,$dni_agente,$ng_agente,$sum,$result,$f_desde,$f_hasta,$estado,$nom_eval,$conn);
 
 if($conn){
 
     if(isset($_POST['A'])){
-        resultadoForm5($nombre_agente,$item1,$item2,$item31,$item32,$item33,$item4,$item5,$item6,$sum,$result,$f_desde,$f_hasta);
+        resultadoForm4($nombre_agente,$item1,$item2,$item3,$item4,$item5,$item6,$item7,$item8,$item9,$item10,$sum,$result,$f_desde,$f_hasta);
         }
       
   }else{

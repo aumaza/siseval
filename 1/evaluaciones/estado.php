@@ -160,14 +160,36 @@ if($conn){
       editForm3($id,$nombre,$f_desde,$f_hasta,$conn);
       
       }
-      if($nivel == 4 && $niv_func_ejec == 0){
+      if($nivel == 4){
       
-      //formulario4($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista);
+      $id = $_GET['id'];
+	// obtenemos nombre del agente
+	$sql = "select * from evaluaciones4 where id = '$id'";
+	mysqli_select_db('siseval');
+	$query = mysqli_query($conn,$sql);
+	while($fila = mysqli_fetch_array($query)){
+	      $nivel = $fila['nivel'];
+	      $nombre = $fila['agente'];
+	      $f_desde = $fila['f_desde'];
+	      $f_hasta = $fila['f_hasta'];
+        }
+      editForm4($id,$nombre,$f_desde,$f_hasta,$conn);
       
       }
-      if($nivel == 5 && $niv_func_ejec == 0){
+      if($nivel == 5){
       
-      //formulario5($agente,$cuil,$nivel_grado,$estudios,$nivel,$revista);
+      $id = $_GET['id'];
+	// obtenemos nombre del agente
+	$sql = "select * from evaluaciones5 where id = '$id'";
+	mysqli_select_db('siseval');
+	$query = mysqli_query($conn,$sql);
+	while($fila = mysqli_fetch_array($query)){
+	      $nivel = $fila['nivel'];
+	      $nombre = $fila['agente'];
+	      $f_desde = $fila['f_desde'];
+	      $f_hasta = $fila['f_hasta'];
+        }
+      editForm5($id,$nombre,$f_desde,$f_hasta,$conn);
       
       }
       if($nivel == 6){
