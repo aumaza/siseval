@@ -2904,6 +2904,8 @@ function editForm1($id,$nombre,$f_desde,$f_hasta,$conn){
 		      </select>
 		    </div><hr>
 		    
+		    <p>Haya realizado cambios o no en los Items, seleccione Cerrada para dar por aprobada la Evaluación.</p><hr>
+		    
 		    <div class="form-group">
 		      <label for="sel1">Estado:</label>
 		      <select class="form-control" name="estado" required>
@@ -2911,6 +2913,18 @@ function editForm1($id,$nombre,$f_desde,$f_hasta,$conn){
 			<option value="abierta" '.($fila['estado'] == "abierta" ? "selected" : ""). '>Abierta</option>
 			<option value="cerrada" '.($fila['estado'] == "cerrada" ? "selected" : ""). '>Cerrada</option>
 			</select>
+		    </div><hr>
+		     
+		    <p>Para finalizar por favor ingrese los datos del validador</p><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Usuario Validador</label>
+		      <input type="text" class="form-control" id="validador" name="validador" onKeyDown="limitText(this,70);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Ingrese TOKEN</label>
+		      <input type="password" class="form-control" id="token" name="token" onKeyDown="limitText(this,25);" required>
 		    </div><hr>
 		    
 		    </div>
@@ -3229,6 +3243,8 @@ function editForm2($id,$nombre,$f_desde,$f_hasta,$conn){
 		      </select>
 		    </div><hr>
 		    
+		    <p>Haya realizado cambios o no en los Items, seleccione Cerrada para dar por aprobada la Evaluación.</p><hr>
+		    
 		    <div class="form-group">
 		      <label for="sel1">Estado:</label>
 		      <select class="form-control" name="estado" required>
@@ -3236,6 +3252,18 @@ function editForm2($id,$nombre,$f_desde,$f_hasta,$conn){
 			<option value="abierta" '.($fila['estado'] == "abierta" ? "selected" : ""). '>Abierta</option>
 			<option value="cerrada" '.($fila['estado'] == "cerrada" ? "selected" : ""). '>Cerrada</option>
 			</select>
+		    </div><hr>
+		     
+		    <p>Para finalizar por favor ingrese los datos del validador</p><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Usuario Validador</label>
+		      <input type="text" class="form-control" id="validador" name="validador" onKeyDown="limitText(this,25);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Ingrese TOKEN</label>
+		      <input type="password" class="form-control" id="token" name="token" onKeyDown="limitText(this,25);" required>
 		    </div><hr>
 		    
 		    </div>
@@ -3554,6 +3582,8 @@ function editForm3($id,$nombre,$f_desde,$f_hasta,$conn){
 		      </select>
 		    </div><hr>
 		    
+		    <p>Haya realizado cambios o no en los Items, seleccione Cerrada para dar por aprobada la Evaluación.</p><hr>
+		    
 		    <div class="form-group">
 		      <label for="sel1">Estado:</label>
 		      <select class="form-control" name="estado" required>
@@ -3561,6 +3591,18 @@ function editForm3($id,$nombre,$f_desde,$f_hasta,$conn){
 			<option value="abierta" '.($fila['estado'] == "abierta" ? "selected" : ""). '>Abierta</option>
 			<option value="cerrada" '.($fila['estado'] == "cerrada" ? "selected" : ""). '>Cerrada</option>
 			</select>
+		    </div><hr>
+		     
+		    <p>Para finalizar por favor ingrese los datos del validador</p><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Usuario Validador</label>
+		      <input type="text" class="form-control" id="validador" name="validador" onKeyDown="limitText(this,25);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Ingrese TOKEN</label>
+		      <input type="password" class="form-control" id="token" name="token" onKeyDown="limitText(this,25);" required>
 		    </div><hr>
 		    
 		    </div>
@@ -3856,6 +3898,8 @@ function editForm4($id,$nombre,$f_desde,$f_hasta,$conn){
 		      </select>
 		    </div><hr>
 		    
+		    <p>Haya realizado cambios o no en los Items, seleccione Cerrada para dar por aprobada la Evaluación.</p><hr>
+		    
 		    <div class="form-group">
 		      <label for="sel1">Estado:</label>
 		      <select class="form-control" name="estado" required>
@@ -3863,6 +3907,18 @@ function editForm4($id,$nombre,$f_desde,$f_hasta,$conn){
 			<option value="abierta" '.($fila['estado'] == "abierta" ? "selected" : ""). '>Abierta</option>
 			<option value="cerrada" '.($fila['estado'] == "cerrada" ? "selected" : ""). '>Cerrada</option>
 			</select>
+		    </div><hr>
+		     
+		    <p>Para finalizar por favor ingrese los datos del validador</p><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Usuario Validador</label>
+		      <input type="text" class="form-control" id="validador" name="validador" onKeyDown="limitText(this,25);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Ingrese TOKEN</label>
+		      <input type="password" class="form-control" id="token" name="token" onKeyDown="limitText(this,25);" required>
 		    </div><hr>
 		    
 		    </div>
@@ -4136,13 +4192,27 @@ function editForm5($id,$nombre,$f_desde,$f_hasta,$conn){
 		      </select>
 		    </div><hr>
 		     
-		     <div class="form-group">
+		     <p>Haya realizado cambios o no en los Items, seleccione Cerrada para dar por aprobada la Evaluación.</p><hr>
+		    
+		    <div class="form-group">
 		      <label for="sel1">Estado:</label>
 		      <select class="form-control" name="estado" required>
 			<option value="" disabled selected>Seleccionar</option>
 			<option value="abierta" '.($fila['estado'] == "abierta" ? "selected" : ""). '>Abierta</option>
 			<option value="cerrada" '.($fila['estado'] == "cerrada" ? "selected" : ""). '>Cerrada</option>
 			</select>
+		    </div><hr>
+		     
+		    <p>Para finalizar por favor ingrese los datos del validador</p><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Usuario Validador</label>
+		      <input type="text" class="form-control" id="validador" name="validador" onKeyDown="limitText(this,25);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Ingrese TOKEN</label>
+		      <input type="password" class="form-control" id="token" name="token" onKeyDown="limitText(this,25);" required>
 		    </div><hr>
 		    
 		    </div>
@@ -4395,6 +4465,8 @@ function editForm6($id,$nombre,$f_desde,$f_hasta,$conn){
 		      </select>
 		    </div><hr>
 		    
+		    <p>Haya realizado cambios o no en los Items, seleccione Cerrada para dar por aprobada la Evaluación.</p><hr>
+		    
 		    <div class="form-group">
 		      <label for="sel1">Estado:</label>
 		      <select class="form-control" name="estado" required>
@@ -4404,6 +4476,17 @@ function editForm6($id,$nombre,$f_desde,$f_hasta,$conn){
 			</select>
 		    </div><hr>
 		     
+		    <p>Para finalizar por favor ingrese los datos del validador</p><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Usuario Validador</label>
+		      <input type="text" class="form-control" id="validador" name="validador" onKeyDown="limitText(this,25);" required>
+		    </div><hr>
+		    
+		    <div class="form-group">
+		      <label for="nombre">Ingrese TOKEN</label>
+		      <input type="password" class="form-control" id="token" name="token" onKeyDown="limitText(this,25);" required>
+		    </div><hr>
 		    
 		    </div>
 		    <div class="panel-footer">
@@ -6373,7 +6456,7 @@ function verEval5($id,$conn){
         <div class="panel-heading">Resultado Evaluación Agente: '.$fila['agente'].'</div>
         <div class="panel-body">
                 
-        <h2>Período Evaluado Desde: <strong>'.$fila['f_desde'].'</strong> Hasta: <strong>'.$$fila['f_hasta'].'</strong></h2>
+        <h2>Período Evaluado Desde: <strong>'.$fila['f_desde'].'</strong> Hasta: <strong>'.$fila['f_hasta'].'</strong></h2>
         <p>Puntajes obtenidos en cada Item</p>            
   <table class="table table-hover">
     <thead>
@@ -6534,6 +6617,141 @@ function verEval6($id,$conn){
 
 }
 
+
+/////////////////////////// SECCION TOKEN ////////////////////////
+
+/*
+** Funcion alta de norma
+*/
+function formToken(){
+
+      echo '<div class="container">
+	    <div class="row">
+	    <div class="col-sm-8">
+	      <h2><img src="../../icons/status/mail-tagged.png"  class="img-reponsive img-rounded"> Generar Token</h2>
+	      <p>Ingrese los datos de quién será el firmante final de las Evaluaciones de Desempeño</p>
+	      <p>Dicho funcionario tendrá un TOKEN para finalizar las evaluaciones</p><hr>
+	        <form action="../token/gen_token.php" method="POST">
+	        
+	        <div class="form-group">
+		  <label for="nombre">Nombre y Apellido</label>
+		  <input type="text" class="form-control" id="nombre" name="usuario" onKeyDown="limitText(this,60);" placeholder="Ingrese Nombre y Apellido sin separar por comas" required>
+		</div>
+		
+		<button type="submit" class="btn btn-success btn-block" name="A"><img src="../../icons/actions/games-solve.png"  class="img-reponsive img-rounded"> Generar</button>
+	      </form> <br>
+	      
+	    </div>
+	    </div>
+	</div>';
+
+}
+
+
+/*
+** Funcion para generar archivo de password
+*/
+
+
+function gentxt($usuario,$token){
+  
+  $fileName = "tokens/$usuario.token.txt"; 
+   
+  if (file_exists($fileName)){
+  
+  //echo "Archivo Existente...";
+  //echo "Se actualizaran los datos...";
+  $file = fopen($fileName, 'w+') or die("Se produjo un error al crear el archivo");
+  
+  fwrite($file, $token) or die("No se pudo escribir en el archivo");
+  
+  fclose($file);
+	
+	echo '<div class="alert alert-info" role="alert">';
+	echo "Se ha generado su archivo TOKEN. Descargue el archivo generado. Recuerde que no debe compartirlo con nadie. Este le será solicitado al momento de dar cierre a las Evaluaciones de Desempeño.";
+	echo "</div>";
+  echo "<hr>";
+  echo '<a href="download_token.php?file_name='.$fileName.'" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-save"></span> Descargar</a>';
+ 
+  }else{
+  
+      //echo "Se Generará archivo de respaldo..."
+      $file = fopen($fileName, 'w') or die("Se produjo un error al crear el archivo");
+      fwrite($file, $token) or die("No se pudo escribir en el archivo");
+      fclose($file);
+	
+        echo '<div class="alert alert-info" role="alert">';
+	echo "Se ha generado su archivo TOKEN. Descargue el archivo generado. Recuerde que no debe compartirlo con nadie. Este le será solicitado al momento de dar cierre a las Evaluaciones de Desempeño.";
+	echo "</div>";
+        echo "<hr>";
+        echo '<a href="download_token.php?file_name='.$fileName.'" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-save"></span> Descargar</a>';
+       
+  
+  }
+  
+  
+}
+
+
+/*
+** Funcion para generar token aleatorio
+*/
+
+function genToken(){
+    //Se define una cadena de caractares.
+    //Os recomiendo desordenar las minúsculas, mayúsculas y números para mejorar la probabilidad.
+    $string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890@";
+    //Obtenemos la longitud de la cadena de caracteres
+    $stringLong = strlen($string);
+ 
+    //Definimos la variable que va a contener la contraseña
+    $token = "";
+    //Se define la longitud de la contraseña, puedes poner la longitud que necesites
+    //Se debe tener en cuenta que cuanto más larga sea más segura será.
+    $long=25;
+ 
+    //Creamos la contraseña recorriendo la cadena tantas veces como hayamos indicado
+    for($i=1 ; $i<=$long ; $i++){
+        //Definimos numero aleatorio entre 0 y la longitud de la cadena de caracteres-1
+        $pos = rand(0,$stringLong-1);
+ 
+        //Vamos formando la contraseña con cada carácter aleatorio.
+        $token .= substr($string,$pos,1);
+    }
+    return $token;
+}
+
+/*
+** Funcion de carga a base de datos tabla evaluaciones3
+*/
+
+function addToken($usuario,$token,$conn){
+
+		
+	mysqli_select_db('siseval');
+	$sqlInsert = "INSERT INTO token ".
+        "(usuario,token)".
+		"VALUES ".
+      "('$usuario','$token')";
+           
+	$res = mysqli_query($conn,$sqlInsert);
+
+
+	if($res){
+		//mysqli_query($conn,$sqlInsert);
+		echo "<br>";
+		echo '<div class="alert alert-success" role="alert">';
+		echo 'Base Actualizada Exitosamente.';
+		echo "</div>";
+		
+	}else{
+		echo "<br>";
+		echo '<div class="alert alert-warning" role="alert">';
+		echo "Hubo un error al guardar el Registro!." .mysqli_error($conn);
+		echo "</div>";
+		
+	}
+}
 
 
 ?>

@@ -146,6 +146,9 @@ $(document).ready(function(){
   $item6 = mysqli_real_escape_string($conn,$_POST["item6"]);
   $estado = mysqli_real_escape_string($conn,$_POST["estado"]);
   
+  $usuario = mysqli_real_escape_string($conn,$_POST["validador"]);
+  $token = mysqli_real_escape_string($conn,$_POST["token"]);
+  
   
   
   $sum = $item1+$item2+$item31+$item32+$item33+$item4+$item5+$item6;
@@ -166,9 +169,26 @@ $(document).ready(function(){
       $result = "Destacado";
   }
   
+  if($conn){
+  
+  $sql = "select * from token where usuario = '$usuario' and token = '$token'";
+  mysqli_select_db('siseval');
+  $query = mysqli_query($conn,$sql);
+  
+  if($query){
+  
+    if($retval = mysqli_fetch_assoc($query)){
+  
   updateResultadoEval5($id,$item1,$item2,$item31,$item32,$item33,$item4,$item5,$item6,$nombre_agente,$dni_agente,$ng_agente,$sum,$result,$f_desde,$f_hasta,$estado,$nom_eval,$conn);
 
-if($conn){
+}else{
+        echo "<br>";
+		echo '<div class="alert alert-warning" role="alert">';
+		echo '<img class="img-reponsive img-rounded" src="../../icons/status/task-attempt.png" /> Ha ingresado datos erroneos del Validador!. Verifiquelos y reintente' .mysqli_error($conn);
+		echo "</div>";
+		exit;
+    }
+    }
 
     if(isset($_POST['A'])){
         resultadoForm5($nombre_agente,$item1,$item2,$item31,$item32,$item33,$item4,$item5,$item6,$sum,$result,$f_desde,$f_hasta);

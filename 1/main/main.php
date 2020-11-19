@@ -136,7 +136,7 @@ $(document).ready(function(){
     .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
-      height: 150%;
+      height: 170%;
     }
     
     /* Set black background color, white text and some padding */
@@ -232,6 +232,22 @@ $(document).ready(function(){
       <div class="panel-body">
       
       <a href="#" data-toggle="tooltip" data-placement="right" title="Administración de Usuarios"><button type="submit" class="btn btn-default btn-sm" name="C"><img class="img-reponsive img-rounded" src="../../icons/actions/meeting-attending.png" /> Usuarios</button></a>
+      
+      </div>
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+        Generar TOKEN</a>
+      </h4>
+    </div>
+    <div id="collapse4" class="panel-collapse collapse">
+      <div class="panel-body">
+      
+      <a href="#" data-toggle="tooltip" data-placement="right" title="Generación de Token para Validación de Evaluación"><button type="submit" class="btn btn-default btn-sm" name="L"><img class="img-reponsive img-rounded" src="../../icons/status/mail-tagged.png" /> Generar Token</button></a>
       
       </div>
     </div>
@@ -337,32 +353,28 @@ $(document).ready(function(){
       }
       if(isset($_POST['E'])){
 	      get_file();
-	          
-      }
+	  }
       if(isset($_POST['F'])){
 	      eval6($conn);
-	          
-      }
+	  }
       if(isset($_POST['G'])){
 	      eval1($conn);
-	          
-      }  
+	  }  
       if(isset($_POST['H'])){
 	      eval2($conn);
-	          
-      }
+	  }
       if(isset($_POST['I'])){
 	      eval3($conn);
-	          
-      }
+	  }
       if(isset($_POST['J'])){
 	      eval4($conn);
-	          
-      }
+	  }
       if(isset($_POST['K'])){
 	      eval5($conn);
-	          
-      }
+	  }
+	  if(isset($_POST['L'])){
+	      formToken();
+	  }
    ?>
       
     </div>

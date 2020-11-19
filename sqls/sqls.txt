@@ -210,3 +210,10 @@ f_hasta date not null,
 estado varchar(7) not null,
 evaluador varchar(90) 
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#tabla token
+create table token(
+id int(11) auto_increment primary key,
+usuario varchar(70) binary not null,
+token varchar(25) binary not null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
